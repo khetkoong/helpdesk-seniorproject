@@ -163,8 +163,8 @@ if (!isset($_SESSION['id'])) {
                                     <i class="pe-7s-home icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>หน้าหลัก
-                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลต่างๆที่ User แจ้งซ่อมเอาไว้
+                                <div>หน้ารายละเอียดการแจ้งซ่อม
+                                    <div class="page-title-subheading">หน้ารายละเอียดจะแสดงข้อมูลต่างๆ ที่ผู้ใช้แจ้งซ่อมเอาไว้
                                     </div>
                                 </div>
                             </div>
@@ -260,8 +260,12 @@ if (!isset($_SESSION['id'])) {
                                                     <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่การแจ้งซ่อมเสร็จสิ้น</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$success_at" ?>" disabled></div>
                                                 </div>
                                             </div>
-
-                                            
+                                            <hr />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <input type="button" value="ย้อนกลับ" class="btn btn-primary" onclick="history.back()">
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

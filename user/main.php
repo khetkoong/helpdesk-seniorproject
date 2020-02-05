@@ -284,13 +284,17 @@ if (!isset($_SESSION['id'])) {
                             <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='mb-2 dropdown-toggle btn btn-info'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
-                                <form action='detail.php' method='post' target='_blank'>
+                                <form action='detail.php' method='post'>
                                     <input type='hidden' name='id' value='" . $row['id'] . "'>
                                     <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
                                 </form>
 
-                                <form action='edit.php' method='post'>
+                                <form action='form_edit.php' method='post'>
                                     <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <input type='hidden' name='room' value='" . $row['room'] . "'>
+                                    <input type='hidden' name='item' value='" . $row['item'] . "'>
+                                    <input type='hidden' name='serial_num' value='" . $row['serial_num'] . "'>
+                                    <input type='hidden' name='detail' value='" . $row['detail'] . "'>
                                     <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
                                 </form>
 
