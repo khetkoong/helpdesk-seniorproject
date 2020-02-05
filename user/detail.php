@@ -185,14 +185,86 @@ if (!isset($_SESSION['id'])) {
                         $result = $dbcon->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo "<td>" . $row["id"] . "</td>";
-                                echo "<td>" . $row["room"] . "</td>";
-                                echo "<td>" . $row["item"] . "</td>";
-                                echo "<td>" . $row["detail"] . "</td>";
-                                echo "<td>" . $row["job_status"] . "</td>";
+                                $id = $row["id"];
+                                $room = $row["room"];
+                                $item = $row["item"];
+                                $serial_num = $row["serial_num"];
+
+                                $detail = $row["detail"];
+
+                                $submitted_name = $row["submitted_name"];
+                                $user_id = $row["user_id"];
+                                // if ($row["repairman"] == '') {
+                                //     $repairman = "-";
+                                // } else {
+                                    $repairman = $row["repairman"];
+                                // }
+
+                                $job_status = $row["job_status"];
+                                
+                                // if ($row["job_status"] == 'waiting') {
+                                //     $job_status = "<div class='badge badge-info'>" . $row["job_status"] . "</div>";
+                                // } else if ($row["job_status"] == 'pending') {
+                                //     $job_status = "<div class='badge badge-warning'>" . $row["job_status"] . "</div>";
+                                // } else {
+                                //     $job_status = "<div class='badge badge-success'>" . $row["job_status"] . "</div>";
+                                // }
+
+                                
+                                $created_at = $row["created_at"];
+                                $pending_at = $row["pending_at"];
+                                $success_at = $row["success_at"];
                             }
                         }
                     ?>
+                    <div class="main-card mb-3 card">
+                                    <div class="card-body"><h5 class="card-title">รายละเอียดการแจ้งซ่อมของ : <?php echo "$id" ?></h5>
+                                        <form class="">
+                                            <div class="form-row">
+                                                <div class="col-md-3">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$id" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="position-relative form-group"><label for="examplePassword11" class="">ห้อง</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$room" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">ครุภัณฑ์</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$item" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="position-relative form-group"><label for="examplePassword11" class="">รหัสครุภัณฑ์</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$serial_num" ?>" disabled></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="position-relative form-group"><label for="exampleAddress" class="">รายละเอียด</label><input name="address" id="exampleAddress" placeholder="-" type="textarea" class="form-control" value="<?php echo "$detail" ?>" disabled></div>
+                                            
+                                            <div class="form-row">
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อผู้แจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$submitted_name" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="examplePassword11" class="">ชื่อพนักงานที่รับงานซ่อม</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$repairman" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">สถานะการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$job_status" ?>" disabled></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="examplePassword11" class="">เวลาที่พนักงานรับงาน</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$pending_at" ?>" disabled></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่การแจ้งซ่อมเสร็จสิ้น</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$success_at" ?>" disabled></div>
+                                                </div>
+                                            </div>
+
+                                            
+                                        </form>
+                                    </div>
+                                </div>
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

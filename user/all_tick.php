@@ -206,7 +206,13 @@ if ($_SESSION['role'] != 'member') {
                                     echo "<td>" . $row["room"] . "</td>";
                                     echo "<td>" . $row["item"] . "</td>";
                                     echo "<td>" . $row["detail"] . "</td>";
-                                    echo "<td>" . $row["job_status"] . "</td>";
+                                    if ($row["job_status"] == 'waiting') {
+                                        echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
+                                    } else if ($row["job_status"] == 'pending') {
+                                        echo "<td>" . "<div class='badge badge-warning'>" . $row["job_status"] . "</div>" . "</td>";
+                                    } else {
+                                        echo "<td>" . "<div class='badge badge-success'>" . $row["job_status"] . "</div>" . "</td>";
+                                    }
                                     echo "</tr>";
                                     echo "</tbody>";
                                 }
