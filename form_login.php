@@ -94,7 +94,7 @@
   <br />
       <div class="login-box card">
         <div class="col-md-12 logo">
-          <p class="text-center text-danger"><h1>Helpdesk System hello git<h1></p>
+          <p class="text-center text-danger"><h1>Helpdesk System<h1></p>
         </div>
         <div class="card-body">
           <h3 class="text-center">เข้าสู่ระบบ</h3>
