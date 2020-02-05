@@ -10,7 +10,7 @@
   <meta name="author" content="">
   <!-- Favicon icon -->
   <link rel="icon" href="images/helpdesk.png" type="image/icon type">
-  <title>Final Project: Helpdesk 123</title>
+  <title>Final Project: Helpdesk</title>
   <!-- Bootstrap Core CSS -->
   <link href="http://asset.oppo.in.th/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
