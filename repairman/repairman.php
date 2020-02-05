@@ -189,7 +189,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                             <?php 
                                             $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name'";
+                                            $sql = "SELECT COUNT(*) FROM ticket";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
@@ -210,7 +210,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                         <?php 
                                             $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name' AND `job_status` = 'waiting'";
+                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'waiting'";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
@@ -231,7 +231,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                         <?php 
                                             $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name' AND `job_status` = 'success'";
+                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'success'";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
