@@ -181,7 +181,7 @@ if ($_SESSION['role'] != 'member') {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
+                        <h5 class="card-title">แจ้งซ่อม</h5>
                             <hr />
                             <form name="frmlogin" method="post" action="ticket.php">
                             <div class="position-relative row form-group"><label for="exampleSelect" class="col-sm-2 col-form-label">ห้อง : </label>
