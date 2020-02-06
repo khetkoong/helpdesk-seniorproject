@@ -241,11 +241,9 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                     </div>
-                    <h2>
-                        <p>ปัญหาที่คุณแจ้ง: </p>
-                    </h2>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
+                        <h5 class="card-title">ปัญหาที่คุณแจ้ง</h5>
                     <?php
 
                     $id = $_SESSION['id'];
@@ -281,7 +279,7 @@ if (!isset($_SESSION['id'])) {
                             // echo "<td>" . $strdate . "</td>";
                             echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
                             echo "<td><div class='dropdown d-inline-block'>
-                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='mb-2 dropdown-toggle btn btn-info'>จัดการ</button>
+                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
                                 <form action='detail.php' method='post'>

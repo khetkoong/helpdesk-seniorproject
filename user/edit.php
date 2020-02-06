@@ -13,7 +13,8 @@
     $serial_num = $_POST['serial_num'];
     $detail = $_POST['detail'];
     $date = date("Y-m-d H:i:s");
-
+    $submitted_name = $_SESSION['name'];
+    
     $query = "UPDATE ticket SET room = '$room', item = '$item', serial_num = '$serial_num', detail = '$detail', created_at = '$date' WHERE id = $id";
     $result = mysqli_query($dbcon, $query);
 

@@ -196,6 +196,7 @@ if ($_SESSION['role'] != 'member') {
                                 echo "<th>สิ่งของ</th>";
                                 echo "<th>รายละเอียด</th>";
                                 echo "<th>สถานะ</th>";
+                                echo "<th>จัดการ</th>";
                                 echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -206,7 +207,18 @@ if ($_SESSION['role'] != 'member') {
                                     echo "<td>" . $row["room"] . "</td>";
                                     echo "<td>" . $row["item"] . "</td>";
                                     echo "<td>" . $row["detail"] . "</td>";
-                                    echo "<td>" . "<div class='mb-2 mr-2 badge badge-success'>" . $row["job_status"] . "</div>" . "</td>";
+                                    echo "<td>" . "<div class='badge badge-success'>" . $row["job_status"] . "</div>" . "</td>";
+                                    echo "<td><div class='dropdown d-inline-block'>
+                                    <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
+                                    <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
+
+                                        <form action='detail.php' method='post'>
+                                            <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                            <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                    </td>";
                                     echo "</tr>";
                                     echo "</tbody>";
                                 }

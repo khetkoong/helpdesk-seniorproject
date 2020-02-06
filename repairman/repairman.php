@@ -253,9 +253,63 @@ if (!isset($_SESSION['id'])) {
     
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                    <h1> เอาตารางมาจากหน้า jobs.php </h1>
+                    <?php
+    $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
+    $result = $dbcon->query($sql);
+    
+    if ($result->num_rows > 0) {    
+        // head of table
+        echo "<table class='mb-0 table table-hover'>";
+        echo "<tr align='center'>";
+        echo "<th>รหัสการแจ้งปัญหา</th>";
+        echo "<th>ห้อง</th>";
+        echo "<th>สิ่งของ</th>";
+        echo "<th>Serial Number</th>";
+        echo "<th>รายละเอียด</th>";
+        echo "<th>ชื่อผู้แจ้งซ่อม</th>";
+        echo "<th>วันที่ และ เวลา</th>";
+        echo "<th>สถานะ</th>";
+        echo "<th>รับงาน</th>";
+        echo "</tr>";
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr align='center'>";
+            echo "<td>" . $row["id"] . " </td>";
+            echo "<td>" . $row["room"] . "</td>";
+            echo "<td>" . $row["item"] . "</td>";
+            echo "<td>" . $row["serial_num"] . "</td>";
+            echo "<td>" . $row["detail"] . "</td>";
+            echo "<td>" . $row["submitted_name"] . "</td>";
+            echo "<td>" . $row["created_at"] . "</td>";
+            echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
+            echo "<td><div class='dropdown d-inline-block'>
+                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
+                            <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
+                                <form action='update_jobs.php' method='post'>
+                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <button type='submit' tabindex='0' class='dropdown-item' style='color:green;'>รับงาน</button>
+                                </form>
 
+                                <form action='detail.php' method='post'>
+                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
+                                </form>
+
+                            </div>
+                            </div>
+                            </td>";
+            echo "</tr>";
+            echo "<input hidden name='id' type='text' value='" . $row['id'] . "'>";
+        }
+        echo "</table>";
+    } else {
+        echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
+    }
+
+    ?>
+</div>
+</div>
     
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>

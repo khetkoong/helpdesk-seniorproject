@@ -49,8 +49,8 @@ Job Status: Pending";
     // LINE NOTIFICATION STOP
 
     echo "<script>
-                alert('submitted success!!');
-                window.location.href='jobs.php';
+                alert('รับงานสำเร็จ \\nคุณได้รับงานการแจ้งซ่อมที่ที่ " . $jobid ."');
+                window.location.href='repairman.php';
             </script>";
 } else {
     echo "เกิดข้อผิดพลาด " . mysqli_error($dbcon);

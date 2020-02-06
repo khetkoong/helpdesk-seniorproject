@@ -189,19 +189,17 @@ if ($_SESSION['role'] != 'member') {
                             $result = $dbcon->query($sql);
                             if ($result->num_rows > 0) {
                                 echo "<table class='mb-0 table table-hover'>";
-                                echo "<thead>";
-                                echo "<tr>";
+                                echo "<tr align='center'>";
                                 echo "<th>รหัสการแจ้งปัญหา</th>";
                                 echo "<th>ห้อง</th>";
                                 echo "<th>สิ่งของ</th>";
                                 echo "<th>รายละเอียด</th>";
                                 echo "<th>สถานะ</th>";
+                                echo "<th>จัดการ</th>";
                                 echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
                                 // output data of each row
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<tr>";
+                                    echo "<tr align='center'>";
                                     echo "<td>" . $row["id"] . "</td>";
                                     echo "<td>" . $row["room"] . "</td>";
                                     echo "<td>" . $row["item"] . "</td>";
@@ -213,8 +211,18 @@ if ($_SESSION['role'] != 'member') {
                                     } else {
                                         echo "<td>" . "<div class='badge badge-success'>" . $row["job_status"] . "</div>" . "</td>";
                                     }
+                                    echo "<td><div class='dropdown d-inline-block'>
+                                    <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
+                                    <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
+
+                                        <form action='detail.php' method='post'>
+                                            <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                            <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                    </td>";
                                     echo "</tr>";
-                                    echo "</tbody>";
                                 }
                                 echo "</table>";
                                 // Free result set
