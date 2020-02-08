@@ -185,7 +185,7 @@ if ($_SESSION['role'] != 'member') {
                             <?php
                             $id = $_SESSION['id'];
                             $name = $_SESSION['name'];
-                            $sql = "SELECT id, room, item, detail, job_status FROM ticket WHERE submitted_name = '" . $name . "'";
+                            $sql = "SELECT id, room, item, detail, job_status FROM ticket WHERE user_id= '$id' ORDER BY created_at DESC";
                             $result = $dbcon->query($sql);
                             if ($result->num_rows > 0) {
                                 echo "<table class='mb-0 table table-hover'>";

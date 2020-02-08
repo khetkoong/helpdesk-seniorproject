@@ -123,13 +123,13 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-file"></i>
-                                    งานที่กำลังรอ
+                                    การแจ้งซ่อมที่กำลังดำเนินการ
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/success_job.php">
                                     <i class="metismenu-icon pe-7s-tools"></i>
-                                    งานที่เสร็จแล้ว
+                                    การแจ้งซ่อมที่เสร็จสิ้น
                                 </a>
                             </li>
                             <!-- <li>
@@ -163,7 +163,7 @@ if (!isset($_SESSION['id'])) {
                                     <i class="pe-7s-file icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>งานที่กำลังรอ
+                                <div>การแจ้งซ่อมที่กำลังดำเนินการ
                                     <div class="page-title-subheading">หน้างานที่กำลังรอจะแสดงการแจ้งซ่อมที่เป็นสถานะ กำลังดำเนินการ
                                     </div>
                                 </div>
@@ -173,89 +173,75 @@ if (!isset($_SESSION['id'])) {
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
-
                     <hr />
                     <br />
-                        
-                    <h2>
-                        <p>งานที่กำลังรอ: </p>
-                    </h2>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h1> เอาตารางมาจากหน้า oldpending_job.php </h1>
-                    <?php
+                        <h5 class="card-title">การแจ้งซ่อมที่กำลังดำเนินการ</h5>
+                            <?php
 
-                    $id = $_SESSION['id'];
-                    $name = $_SESSION['name'];
+                            $repairman_name = $_SESSION['name'];
 
-                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE submitted_name= '" . $name . "' AND job_status= 'waiting' ORDER BY created_at DESC";
-                    $result = $dbcon->query($sql);
+                            $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, pending_at, job_status FROM ticket WHERE job_status = 'pending' AND repairman = '$repairman_name' ORDER BY pending_at ASC";
+                            $result = $dbcon->query($sql);
 
-                    if ($result->num_rows > 0) {
-                        // head of table
-                        echo "<table class='mb-0 table table-hover'>";
-                        echo "<tr align='center'>";
-                        echo "<th>รหัสการแจ้งปัญหา</th>";
-                        echo "<th>ห้อง</th>";
-                        echo "<th>สิ่งของ</th>";
-                        echo "<th>Serial Number</th>";
-                        echo "<th>รายละเอียด</th>";
-                        // echo "<th>Date</th>";
-                        echo "<th>สถานะ</th>";
-                        echo "<th>จัดการ</th>";
-                        echo "</tr>";
+                            if ($result->num_rows > 0) {
+                                // head of table
+                                echo "<table class='mb-0 table table-hover'>";
+                                echo "<tr align='center'>";
+                                echo "<th>รหัสการแจ้งปัญหา</th>";
+                                echo "<th>ห้อง</th>";
+                                echo "<th>สิ่งของ</th>";
+                                echo "<th>Serial Number</th>";
+                                echo "<th>รายละเอียด</th>";
+                                echo "<th>ชื่อผู้แจ้งซ่อม</th>";
+                                echo "<th>สร้างเมื่อ</th>";
+                                echo "<th>รับงานเมื่อ</th>";
+                                echo "<th>สถานะ</th>";
+                                echo "<th>ส่งงาน</th>";
+                                echo "</tr>";
 
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr align='center'>";
-                            echo "<td>" . $row["id"] . "</td>";
-                            echo "<td>" . $row["room"] . "</td>";
-                            echo "<td>" . $row["item"] . "</td>";
-                            echo "<td>" . $row["serial_num"] . "</td>";
-                            echo "<td>" . $row["detail"] . "</td>";
-                            // $date = new DateTime($row["create_at"]);
-                            // $strdate = $date->format('Y-m-d H:i:s');
-                            // echo "<td>" . $strdate . "</td>";
-                            echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
-                            echo "<td><div class='dropdown d-inline-block'>
-                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='mb-2 dropdown-toggle btn btn-info'>จัดการ</button>
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr align='center'>";
+                                    echo "<td>" . $row["id"] . "</td>";
+                                    echo "<td>" . $row["room"] . "</td>";
+                                    echo "<td>" . $row["item"] . "</td>";
+                                    echo "<td>" . $row["serial_num"] . "</td>";
+                                    echo "<td>" . $row["detail"] . "</td>";
+                                    echo "<td>" . $row["submitted_name"] . "</td>";
+                                    echo "<td>" . $row["created_at"] . "</td>";
+                                    echo "<td>" . $row["pending_at"] . "</td>";
+                                    echo "<td>" . "<div class='badge badge-warning'>" . $row["job_status"] . "</div>" . "</td>";
+                                    echo "<td><div class='dropdown d-inline-block'>
+                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
-                                <form action='detail.php' method='post' target='_blank'>
+                                <form action='success_jobs.php' method='post'>
+                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <button type='submit' tabindex='0' class='dropdown-item' style='color:green;'>ส่งงาน</button>
+                                </form>
+
+                                <form action='detail.php' method='post'>
                                     <input type='hidden' name='id' value='" . $row['id'] . "'>
                                     <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
                                 </form>
 
-                                <form action='edit.php' method='post'>
-                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                    <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
-                                </form>
-
-                                <form action='delete.php' method='post'>
-                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                    <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบการแจ้งซ่อม</button>
-                                </form>
                             </div>
                             </div>
                             </td>";
-                            echo "</tr>";
-                        }
-                        echo "</table>";
-                        // Free result set
-                        mysqli_free_result($result);
-                    } else {
-                        echo "ในขณะนี้ยังไม่มีงาน <br />";
-                        echo "แจ้งปัญหาแล้วรึยัง? ";
-                        echo "<a href='form_ticket.php'>ไป</a>";
-                        /* echo "Have no job now <br />";
-        echo "Go send Ticket? ";
-        echo "<a href='form_ticket.php'>GO</a>"; */
-                    }
+                                    echo "</tr>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "Have no job now <br />";
+                            }
 
-                    ?>
-                    <hr />
-                </div>
-                </div>
+                            ?>
+                            <hr />
+                        </div>
+                    </div>
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

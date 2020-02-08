@@ -249,7 +249,7 @@ if (!isset($_SESSION['id'])) {
                     $id = $_SESSION['id'];
                     $name = $_SESSION['name'];
 
-                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE user_id= '" . $id . "' AND job_status= 'waiting' ORDER BY created_at DESC";
+                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE user_id= '$id' AND job_status= 'waiting' ORDER BY created_at DESC";
                     $result = $dbcon->query($sql);
 
                     if ($result->num_rows > 0) {

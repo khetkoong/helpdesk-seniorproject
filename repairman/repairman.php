@@ -123,13 +123,13 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="/helpdeskproject/repairman/pending_job.php">
                                     <i class="metismenu-icon pe-7s-file"></i>
-                                    งานที่กำลังรอ
+                                    การแจ้งซ่อมที่กำลังดำเนินการ
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/success_job.php">
                                     <i class="metismenu-icon pe-7s-tools"></i>
-                                    งานที่เสร็จแล้ว
+                                    การแจ้งซ่อมที่เสร็จสิ้น
                                 </a>
                             </li>
                             <!-- <li>
@@ -242,10 +242,6 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                     </div>
-                    <h2>
-                        <p>งานทั้งหมด: </p>
-                    </h2>
-                    
                     <!-- MAIN LAYOUT START HERE -->
                     <?php
     $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
@@ -253,6 +249,7 @@ if (!isset($_SESSION['id'])) {
     
                     <div class="main-card mb-3 card">
                         <div class="card-body">
+                        <h5 class="card-title">การแจ้งซ่อมทั้งหมด</h5>
                     <?php
     $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
     $result = $dbcon->query($sql);

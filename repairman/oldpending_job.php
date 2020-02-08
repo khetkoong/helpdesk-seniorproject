@@ -9,9 +9,7 @@ session_start();
 if (!isset($_SESSION['id'])) {
     header("Location: form_login.php");
 }
-if ($_SESSION['role'] != 'repairman') {
-    header("Location: form_login.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +19,6 @@ if ($_SESSION['role'] != 'repairman') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pending Jobs</title>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 
 <body>
