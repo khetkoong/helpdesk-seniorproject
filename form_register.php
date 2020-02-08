@@ -78,26 +78,26 @@ require 'connect.php';
                         <form name="register" id="register" action="register.php" method="POST">
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <label>ชื่อ </label>
+                                    <label>ชื่อ <small class="text-danger">*</small></label> 
                                     <input type="text" class="form-control" name="Name" required autofocus>
                                 </div> <!-- form-group end.// -->
                                 <div class="col form-group">
-                                    <label>นามสกุล</label>
+                                    <label>นามสกุล <small class="text-danger">*</small></label>
                                     <input type="text" class="form-control" name="Lastname" required autofocus>
                                 </div> <!-- form-group end.// -->
                             </div> <!-- form-row end.// -->
                             <div class="form-group">
-                                <label>รหัสพนักงาน</label>
+                                <label>รหัสพนักงาน <small class="text-danger">*</small></label>
                                 <input type="text" class="form-control" name="Userid" required autofocus>
                             </div> <!-- form-group end.// -->
                             <div class="form_group">
-                                <label>สาขา</label>
+                                <label>สาขา <small class="text-danger">*</small></label>
                                 <?php
                                 $sql = "SELECT dep_name FROM dep";
                                 $result = $dbcon->query($sql);
                                 ?>
-                                <select required autofocus id="inputState" class="form-control" name="Department">
-                                    <option>- กรุณาเลือก -</option>
+                                <select autofocus id="inputState" class="form-control" name="Department" required>
+                                    <option value="">- กรุณาเลือก -</option>
                                     <?php
                                     while ($rows = $result->fetch_assoc()) {
                                         $dep_name = $rows['dep_name'];
@@ -109,22 +109,23 @@ require 'connect.php';
                                 <br />
                             </div>
                             <div class="form-group">
-                                <label>ชื่อผู้ใช้</label>
+                                <label>ชื่อผู้ใช้ <small class="text-danger">*</small></label>
                                 <input type="text" class="form-control" name="Username" required autofocus>
                                 <small>
                                     <p class="text-danger">** ใช้สำหรับเข้าสู่ระบบ</p>
                                 </small>
                             </div> <!-- form-group end.// -->
                             <div class="form-group">
-                                <label>รหัสผ่าน</label>
-                                <input class="form-control" type="password" name="Password" required autofocus>
+                                <label>รหัสผ่าน <small class="text-danger">*</small></label>
+                                <input class="form-control" type="password" name="Password" minlength="8" required autofocus>
                                 <small>
                                     <p class="text-danger">** ใช้สำหรับเข้าสู่ระบบ</p>
+                                    <p class="text-danger">** รหัสผ่านไม่ต่ำกว่า 8 ตัว</p>
                                 </small>
                             </div> <!-- form-group end.// -->
                             <div class="form-group">
-                                <label>ยืนยันรหัสผ่าน</label>
-                                <input type="password" class="form-control" name="conPassword" required autofocus>
+                                <label>ยืนยันรหัสผ่าน <small class="text-danger">*</small></label>
+                                <input type="password" class="form-control" name="conPassword" minlength="8" required autofocus>
                             </div> <!-- form-group end.// -->
                             <hr />
                             <div class="form-group">

@@ -185,7 +185,7 @@ if ($_SESSION['role'] != 'member') {
                             <?php
                             $id = $_SESSION['id'];
                             $name = $_SESSION['name'];
-                            $sql = "SELECT id, room, item, detail, job_status FROM ticket WHERE submitted_name = '" . $name . "' AND job_status= 'pending'";
+                            $sql = "SELECT id, room, item, detail, job_status FROM ticket WHERE `user_id` = '$id' AND job_status= 'pending'";
                             $result = $dbcon->query($sql);
                             if ($result->num_rows > 0) {
                                 echo "<table class='mb-0 table table-hover'>";
@@ -226,9 +226,8 @@ if ($_SESSION['role'] != 'member') {
                                 // Free result set
                                 mysqli_free_result($result);
                             } else {
-                                echo "ในขณะนี้ยังไม่มีงาน <br />";
-                                echo "แจ้งปัญหาแล้วรึยัง? ";
-                                echo "<a href='form_ticket.php'>ไป</a>";
+                                echo "ยังไม่มีการซ่อมสถานะ Pending <br />";
+                                echo "กรุณารอพนักงานซ่อมดำเนินการ";
                             }
                             ?>
                         </div>

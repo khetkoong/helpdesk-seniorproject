@@ -171,8 +171,8 @@ if (!isset($_SESSION['id'])) {
                         </div>
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
-                    <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
+                    <?php echo "<h1>ยินดีต้อนรับ คุณ " . $_SESSION['name'] . "</h1>" ?>
+                    <?php echo "แผนก : " . $_SESSION['department'] ?><br />
 
                     <hr />
                     <br />
@@ -187,8 +187,8 @@ if (!isset($_SESSION['id'])) {
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
                                             <?php 
-                                            $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name'";
+                                            $id = $_SESSION['id'];
+                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `user_id` = '$id'";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
@@ -209,7 +209,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                         <?php 
                                             $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name' AND `job_status` = 'waiting'";
+                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `user_id` = '$id' AND `job_status` = 'waiting'";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
@@ -230,7 +230,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                         <?php 
                                             $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `submitted_name` = '$name' AND `job_status` = 'success'";
+                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `user_id` = '$id' AND `job_status` = 'success'";
                                             $result = $dbcon->query($sql);
                                             $row = $result->fetch_row();
                                             echo $row[0];
@@ -249,7 +249,7 @@ if (!isset($_SESSION['id'])) {
                     $id = $_SESSION['id'];
                     $name = $_SESSION['name'];
 
-                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE submitted_name= '" . $name . "' AND job_status= 'waiting' ORDER BY created_at DESC";
+                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE user_id= '" . $id . "' AND job_status= 'waiting' ORDER BY created_at DESC";
                     $result = $dbcon->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -311,10 +311,7 @@ if (!isset($_SESSION['id'])) {
                     } else {
                         echo "ในขณะนี้ยังไม่มีงาน <br />";
                         echo "แจ้งปัญหาแล้วรึยัง? ";
-                        echo "<a href='form_ticket.php'>ไป</a>";
-                        /* echo "Have no job now <br />";
-        echo "Go send Ticket? ";
-        echo "<a href='form_ticket.php'>GO</a>"; */
+                        echo "<a href='form_ticket.php'>แจ้งซ่อม</a>";
                     }
 
                     ?>

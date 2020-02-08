@@ -7,7 +7,7 @@
     $conpassword = $_POST['conPassword'];
     if ($password != $conpassword) {
         echo ("<script LANGUAGE='JavaScript'>
-            window.alert('Confirm Password not Match!!');
+            window.alert('รหัสผ่านไม่ตรงกัน');
             window.location.href='form_register.php';
             </script>");
         exit;
@@ -22,15 +22,15 @@
     $hashpassword = hash_hmac('sha256', $password, $salt);
 
     // check duplicate username
-    // $checkdup = "SELECT * FROM `users` WHERE username = '".$username."'";
-    // $resultdup = mysqli_query($dbcon, $checkdup);
-    // if($resultdup) {
-    //     echo ("<script LANGUAGE='JavaScript'>
-    //         window.alert('Username already exist');
-    //         window.location.href='form_register.php';
-    //         </script>");
-    //     exit;
-    // }
+    $checkdup = "SELECT * FROM `users` WHERE username = '".$username."'";
+    $resultdup = mysqli_query($dbcon, $checkdup);
+    if($resultdup) {
+        echo ("<script LANGUAGE='JavaScript'>
+            window.alert('ชื่อผู้ใช้นี้มีอยู่แล้ว');
+            window.location.href='form_register.php';
+            </script>");
+        exit;
+    }
 
     // save username into database
     $query = "INSERT INTO users (user_id, username, password, name, lastname, dep) VALUES ('$user_id', '$username', '$hashpassword', '$name', '$lastname','$department')";
