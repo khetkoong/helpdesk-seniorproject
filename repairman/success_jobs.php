@@ -48,7 +48,7 @@ Job Status: Success
     // LINE NOTIFICATION STOP
 
         echo "<script>
-                alert('submitted success!!');
+                alert('ส่งงานสำเร็จ');
                 window.location.href='pending_job.php';
             </script>";
     } else {
