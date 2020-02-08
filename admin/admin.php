@@ -185,6 +185,7 @@ if (!isset($_SESSION['id'])) {
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
+                                                $job_total = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -206,6 +207,7 @@ if (!isset($_SESSION['id'])) {
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
+                                                $job_waiting = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -227,6 +229,7 @@ if (!isset($_SESSION['id'])) {
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
+                                                $job_success = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -239,30 +242,30 @@ if (!isset($_SESSION['id'])) {
                         <div class="col-md-6">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Pie Chart</h5>
-                                    <canvas id="testchart"></canvas>
+                                    <h5 class="card-title">ชาร์ตจำนวนการแจ้งซ่อมทั้งหมด</h5>
+                                    <canvas id="job_status"></canvas>
                                 </div>
                             </div>
-                            <div class="main-card mb-3 card">
+                            <!-- <div class="main-card mb-3 card">
                                 <div class="card-body">
                                     <h5 class="card-title">Radar Chart</h5>
                                     <canvas id="radar-chart"></canvas>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-md-6">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Doughnut</h5>
-                                    <canvas id="doughnut-chart"></canvas>
+                                    <h5 class="card-title">ชาร์ตจำนวนผู้ใช้งั้นทั้งระบบ</h5>
+                                    <canvas id="role"></canvas>
                                 </div>
                             </div>
-                            <div class="main-card mb-3 card">
+                            <!-- <div class="main-card mb-3 card">
                                 <div class="card-body">
                                     <h5 class="card-title">Polar Chart</h5>
                                     <canvas id="polar-chart"></canvas>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -274,14 +277,42 @@ if (!isset($_SESSION['id'])) {
     </div>
     <script type="text/javascript" src="../assets/scripts/main.js"></script>
     <script>
-    var ctx = document.getElementById('testchart').getContext('2d');
-    var testchart = new Chart(ctx, {
+    var ctx = document.getElementById('job_status').getContext('2d');
+    var job_status = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['การแจ้งซ่อมสถานะรอ', 'การแจ้งซ่อมสถานะกำลังดำเนินการ', 'การแจ้งซ่อมสถานะเสร็จแล้ว'],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+    var ctx = document.getElementById('role').getContext('2d');
+    var role = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['แอดมิน', 'พนักงานซ่อม', 'ผู้ใช้งาน'],
+            datasets: [{
+                label: '# of Votes',
+                data: [1, 5, 20],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -303,6 +334,7 @@ if (!isset($_SESSION['id'])) {
         }
     });
     </script>
+    
 </body>
 
 </html>
