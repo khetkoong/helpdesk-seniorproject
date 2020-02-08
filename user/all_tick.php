@@ -137,7 +137,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/user/success_tick.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>
@@ -166,8 +166,8 @@ if ($_SESSION['role'] != 'member') {
                                     <i class="pe-7s-display2 icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>หน้ารวมการแจ้งซ่อม
-                                    <div class="page-title-subheading">หน้ารวมการแจ้งซ่อมต่างๆที่ผู้ใช้ได้แจ้งซ่อมไว้
+                                <div>หน้ารวมการแจ้งซ่อมทั้งหมด
+                                    <div class="page-title-subheading">หน้ารวมการแจ้งซ่อมทั้งหมด ที่ผู้ใช้ได้แจ้งซ่อมไว้
                                     </div>
                                 </div>
                             </div>

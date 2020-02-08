@@ -128,7 +128,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/admin/form_additem.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-plus"></i>
                                     เพิ่มสิ่งของ
                                 </a>
                             </li>
@@ -140,7 +140,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>

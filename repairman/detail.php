@@ -122,14 +122,14 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/pending_job.php">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-tools"></i>
                                     งานที่กำลังรอ
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/success_job.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
-                                    งานที่เสร็จแล้ว
+                                    <i class="metismenu-icon pe-7s-check"></i>
+                                    งานที่เสร็จแล้ว 
                                 </a>
                             </li>
                             <!-- <li>
@@ -146,7 +146,7 @@ if (!isset($_SESSION['id'])) {
                             </li> -->
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>

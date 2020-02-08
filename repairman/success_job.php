@@ -122,13 +122,13 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/pending_job.php">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-tools"></i>
                                     การแจ้งซ่อมที่กำลังดำเนินการ
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     การแจ้งซ่อมที่เสร็จสิ้น
                                 </a>
                             </li>
@@ -160,7 +160,7 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-tools icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-check icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>การแจ้งซ่อมที่เสร็จสิ้น

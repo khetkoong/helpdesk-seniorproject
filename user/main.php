@@ -134,7 +134,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/user/success_tick.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>
@@ -146,7 +146,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -164,7 +164,7 @@ if (!isset($_SESSION['id'])) {
                                     </i>
                                 </div>
                                 <div>หน้าหลัก
-                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลต่างๆที่ User แจ้งซ่อมเอาไว้
+                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลต่างๆ ที่ผู้ใช้แจ้งซ่อมเอาไว้
                                     </div>
                                 </div>
                             </div>
