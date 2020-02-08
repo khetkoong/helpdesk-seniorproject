@@ -146,7 +146,7 @@ if (!isset($_SESSION['id'])) {
                             </li> -->
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -160,11 +160,11 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-home icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-file icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>งานที่กำลังรอ
-                                    <div class="page-title-subheading">หน้าหลักจะแสดงการแจ้งซ่อมที่เป็นสถานะ กำลังดำเนินการ
+                                    <div class="page-title-subheading">หน้างานที่กำลังรอจะแสดงการแจ้งซ่อมที่เป็นสถานะ กำลังดำเนินการ
                                     </div>
                                 </div>
                             </div>

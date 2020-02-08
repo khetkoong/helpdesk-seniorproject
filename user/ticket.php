@@ -57,7 +57,7 @@ Submitted at: $date
     // LINE NOTIFICATION STOP -----------------------------------------------
 
         echo "<script>
-                alert('submitted success!!');
+                alert('แจ้งปัญหาสำเร็จ!!');
                 window.location.href='form_ticket.php';
             </script>";
     } else {

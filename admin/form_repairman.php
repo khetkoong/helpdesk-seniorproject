@@ -117,12 +117,12 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
-                                    แดชบอร์ด
+                                    หน้าหลัก
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-add-user"></i>
                                     เพิ่มช่างซ่อม
                                 </a>
                             </li>
@@ -154,7 +154,7 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-file icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>เพิ่มช่างซ่อม

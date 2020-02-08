@@ -41,7 +41,7 @@
 
     } else {
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('wrong username or password');
+        window.alert('ชื่อผู้ใช้ หรือ รหัสผ่าน ผิด');
         window.location.href='form_login.php';
         </script>");
     }

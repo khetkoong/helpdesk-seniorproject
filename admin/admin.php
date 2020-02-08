@@ -117,12 +117,12 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-home"></i>
-                                    แดชบอร์ด
+                                    หน้าหลัก
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/admin/form_repairman.php">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-add-user"></i>
                                     เพิ่มช่างซ่อม
                                 </a>
                             </li>
@@ -140,7 +140,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -157,8 +157,8 @@ if (!isset($_SESSION['id'])) {
                                     <i class="pe-7s-home icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>แดชบอร์ด
-                                    <div class="page-title-subheading">หน้าแดชบอร์ดจะแสดงข้อมูลรายงานต่างๆเบื้องต้น
+                                <div>หน้าหลัก
+                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลรายงานต่างๆเบื้องต้น
                                     </div>
                                 </div>
                             </div>

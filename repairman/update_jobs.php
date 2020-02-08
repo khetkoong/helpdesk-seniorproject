@@ -49,7 +49,7 @@ Job Status: Pending";
     // LINE NOTIFICATION STOP
 
     echo "<script>
-                alert('รับงานสำเร็จ \\nคุณได้รับงานการแจ้งซ่อมที่ที่ " . $jobid ."');
+                alert('รับงานสำเร็จ \\nคุณได้รับงานการแจ้งซ่อมที่ " . $jobid ."');
                 window.location.href='repairman.php';
             </script>";
 } else {

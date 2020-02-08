@@ -149,7 +149,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>

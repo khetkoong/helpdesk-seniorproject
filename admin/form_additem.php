@@ -117,12 +117,12 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
-                                    แดชบอร์ด
+                                    หน้าหลัก
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/admin/form_repairman.php">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-add-user"></i>
                                     เพิ่มช่างซ่อม
                                 </a>
                             </li>
