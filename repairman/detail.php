@@ -115,35 +115,35 @@ if (!isset($_SESSION['id'])) {
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">เมนู</li>
                             <li>
-                                <a href="/helpdeskproject/user/main.php" class="mm-active">
+                                <a href="/helpdeskproject/repairman/repairman.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                     หน้าหลัก
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/user/form_ticket.php">
+                                <a href="/helpdeskproject/repairman/pending_job.php">
                                     <i class="metismenu-icon pe-7s-file"></i>
-                                    แจ้งปัญหา
+                                    งานที่กำลังรอ
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/user/waiting_tick.php">
+                                <a href="/helpdeskproject/repairman/success_job.php">
                                     <i class="metismenu-icon pe-7s-tools"></i>
-                                    ปัญหาที่อยู่ในระหว่างดำเนินการ
+                                    งานที่เสร็จแล้ว
                                 </a>
                             </li>
-                            <li>
-                                <a href="/helpdeskproject/user/success_tick.php">
+                            <!-- <li>
+                                <a href="/helpdeskproject/repairman/success_tick.php">
                                     <i class="metismenu-icon pe-7s-tools"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/user/all_tick.php">
+                                <a href="/helpdeskproject/repairman/all_tick.php">
                                     <i class="metismenu-icon pe-7s-display2"></i>
                                     รวมการแจ้งปัญหา
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-door-lock"></i>
