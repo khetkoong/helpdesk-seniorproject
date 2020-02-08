@@ -122,14 +122,14 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/pending_job.php">
-                                    <i class="metismenu-icon pe-7s-file"></i>
+                                    <i class="metismenu-icon pe-7s-tools"></i>
                                     การแจ้งซ่อมที่กำลังดำเนินการ
                                 </a>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/repairman/success_job.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
-                                    การแจ้งซ่อมที่เสร็จสิ้น
+                                    <i class="metismenu-icon pe-7s-check"></i>
+                                    การแจ้งซ่อมที่เสร็จสิ้น 
                                 </a>
                             </li>
                             <!-- <li>

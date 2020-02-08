@@ -128,7 +128,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-plus"></i>
                                     เพิ่มสิ่งของ
                                 </a>
                             </li>
@@ -140,7 +140,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -154,7 +154,7 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-file icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-plus icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>เพิ่มสิ่งของ
