@@ -137,7 +137,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>
@@ -149,7 +149,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -163,7 +163,7 @@ if ($_SESSION['role'] != 'member') {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-tools icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-check icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>หน้าแสดงการแจ้งซ่อมที่ได้รับการแก้ไขแล้ว

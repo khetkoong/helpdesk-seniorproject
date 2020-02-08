@@ -134,7 +134,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/user/success_tick.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>

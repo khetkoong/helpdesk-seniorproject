@@ -137,7 +137,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/user/success_tick.php">
-                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    <i class="metismenu-icon pe-7s-check"></i>
                                     ปัญหาที่ได้รับการแก้ไขแล้ว
                                 </a>
                             </li>
@@ -149,7 +149,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
-                                    <i class="metismenu-icon pe-7s-door-lock"></i>
+                                    <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
                                 </a>
                             </li>
@@ -167,7 +167,7 @@ if ($_SESSION['role'] != 'member') {
                                     </i>
                                 </div>
                                 <div>หน้าแสดงการแจ้งปัญหาที่อยู่ในระหว่างดำเนินการ
-                                    <div class="page-title-subheading">หน้าแสดงการแจ้งซ่อมต่างๆ ที่ปัญหาที่อยู่ในระหว่างดำเนินการ
+                                    <div class="page-title-subheading">หน้าแสดงการแจ้งซ่อมต่างๆ ที่ปัญหาอยู่ในระหว่างดำเนินการ
                                     </div>
                                 </div>
                             </div>
