@@ -121,10 +121,25 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_repairman.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
-                                    เพิ่มช่างซ่อม
+                                    พนักงานซ่อม
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/allrepairman.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อพนักงานซ่อม
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_repairman.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มช่างซ่อม
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/admin/form_additem.php">
@@ -171,21 +186,21 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="row">
                         <div class="col-md-6 col-xl-4">
-                            <div class="card mb-3 widget-content bg-midnight-bloom">
+                            <div class="card mb-3 widget-content bg-primary">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">แจ้งซ่อม</div>
+                                        <div class="widget-heading">ผู้ใช้งาน</div>
                                         <div class="widget-subheading">ทั้งหมด</div>
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM ticket ";
+                                                $sql = "SELECT COUNT(*) FROM users";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
-                                                $job_total = $row[0];
+                                                $user_total = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -193,21 +208,21 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-4">
-                            <div class="card mb-3 widget-content bg-sunny-morning">
+                            <div class="card mb-3 widget-content bg-success">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">รายการที่รอซ่อม</div>
-                                        <div class="widget-subheading">รอพนักงานซ่อม</div>
+                                        <div class="widget-heading">ผู้ใช้งานทั่วไป</div>
+                                        <div class="widget-subheading">ทั้งหมด</div>
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'waiting'";
+                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'member'";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
-                                                $job_waiting = $row[0];
+                                                $user_member = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -215,21 +230,21 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-4">
-                            <div class="card mb-3 widget-content bg-grow-early">
+                            <div class="card mb-3 widget-content bg-warning">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">ปัญหาที่ได้รับแก้ไขแล้ว</div>
-                                        <div class="widget-subheading">พนักงานซ่อมเรียบร้อย</div>
+                                        <div class="widget-heading">พนักงานซ่อม</div>
+                                        <div class="widget-subheading">ทั้งหมด</div>
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'success'";
+                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'repairman'";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
-                                                $job_success = $row[0];
+                                                $user_repairman = $row[0];
                                                 ?>
                                             </span></div>
                                     </div>
@@ -275,66 +290,82 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
     </div>
+    <?php
+    $sql = "SELECT COUNT(*) FROM ticket ";
+    $result = $dbcon->query($sql);
+    $row = $result->fetch_row();
+    echo $row[0];
+    $job_total = $row[0];
+    ?>
+    <?php
+    $sql = "SELECT COUNT(*) FROM ticket WHERE job_status = 'waiting'";
+    $result = $dbcon->query($sql);
+    $row = $result->fetch_row();
+    echo $row[0];
+    $job_waiting = $row[0];
+    ?>
+    <?php
+    $sql = "SELECT COUNT(*) FROM ticket WHERE job_status = 'success'";
+    $result = $dbcon->query($sql);
+    $row = $result->fetch_row();
+    echo $row[0];
+    $job_success = $row[0];
+    ?>
     <script type="text/javascript" src="../assets/scripts/main.js"></script>
     <script>
-    var ctx = document.getElementById('job_status').getContext('2d');
-    var job_status = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['การแจ้งซ่อมสถานะรอ', 'การแจ้งซ่อมสถานะกำลังดำเนินการ', 'การแจ้งซ่อมสถานะเสร็จแล้ว'],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        }
-    });
-    var ctx = document.getElementById('role').getContext('2d');
-    var role = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['แอดมิน', 'พนักงานซ่อม', 'ผู้ใช้งาน'],
-            datasets: [{
-                label: '# of Votes',
-                data: [1, 5, 20],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        }
-    });
+        var ctx = document.getElementById('job_status').getContext('2d');
+        var job_status = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['การแจ้งซ่อมสถานะรอ', 'การแจ้งซ่อมสถานะกำลังดำเนินการ', 'การแจ้งซ่อมสถานะเสร็จแล้ว'],
+                datasets: [{
+                    label: '# of Jobs',
+                    data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
+                    backgroundColor: [
+                        'rgba(60, 51, 255, 0.2)',
+                        'rgba(255, 227, 51, 0.2)',
+                        'rgba(24, 231, 58, 0.2)',
+
+                    ],
+                    borderColor: [
+                        'rgba(60, 51, 255, 1)',
+                        'rgba(255, 227, 51, 1)',
+                        'rgba(24, 231, 58, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+        var ctx = document.getElementById('role').getContext('2d');
+        var role = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['แอดมิน', 'พนักงานซ่อม', 'ผู้ใช้งาน'],
+                datasets: [{
+                    label: '# of Users',
+                    data: [<?php echo "$user_total" ?>, <?php echo "$user_member" ?>, <?php echo "$user_repairman" ?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
     </script>
-    
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@ session_start();
 
 // if login yet
 if (!isset($_SESSION['id'])) {
-    header("Location: form_login.php");
+    header("Location: /helpdeskproject/form_login.php");
 }
 
 ?>

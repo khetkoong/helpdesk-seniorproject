@@ -129,7 +129,7 @@ if (!isset($_SESSION['id'])) {
                             <li>
                                 <a href="/helpdeskproject/repairman/success_job.php">
                                     <i class="metismenu-icon pe-7s-check"></i>
-                                    การแจ้งซ่อมที่เสร็จสิ้น 
+                                    การแจ้งซ่อมที่เสร็จสิ้น
                                 </a>
                             </li>
                             <!-- <li>
@@ -170,7 +170,7 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
 
@@ -187,14 +187,14 @@ if (!isset($_SESSION['id'])) {
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
-                                            <?php 
-                                            $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket";
-                                            $result = $dbcon->query($sql);
-                                            $row = $result->fetch_row();
-                                            echo $row[0];
-                                            ?>
-                                        </span></div>
+                                                <?php
+                                                $name = $_SESSION['name'];
+                                                $sql = "SELECT COUNT(*) FROM ticket";
+                                                $result = $dbcon->query($sql);
+                                                $row = $result->fetch_row();
+                                                echo $row[0];
+                                                ?>
+                                            </span></div>
                                     </div>
                                 </div>
                             </div>
@@ -208,14 +208,14 @@ if (!isset($_SESSION['id'])) {
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
-                                        <?php 
-                                            $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'waiting'";
-                                            $result = $dbcon->query($sql);
-                                            $row = $result->fetch_row();
-                                            echo $row[0];
-                                        ?>
-                                        </span></div>
+                                                <?php
+                                                $name = $_SESSION['name'];
+                                                $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'waiting'";
+                                                $result = $dbcon->query($sql);
+                                                $row = $result->fetch_row();
+                                                echo $row[0];
+                                                ?>
+                                            </span></div>
                                     </div>
                                 </div>
                             </div>
@@ -229,14 +229,14 @@ if (!isset($_SESSION['id'])) {
                                     </div>
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
-                                        <?php 
-                                            $name = $_SESSION['name'];
-                                            $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'success'";
-                                            $result = $dbcon->query($sql);
-                                            $row = $result->fetch_row();
-                                            echo $row[0];
-                                        ?>
-                                        </span></div>
+                                                <?php
+                                                $name = $_SESSION['name'];
+                                                $sql = "SELECT COUNT(*) FROM ticket WHERE `job_status` = 'success'";
+                                                $result = $dbcon->query($sql);
+                                                $row = $result->fetch_row();
+                                                echo $row[0];
+                                                ?>
+                                            </span></div>
                                     </div>
                                 </div>
                             </div>
@@ -244,42 +244,42 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php
-    $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
-    $result = $dbcon->query($sql);  ?>
-    
+                    $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
+                    $result = $dbcon->query($sql);  ?>
+
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">การแจ้งซ่อมทั้งหมด</h5>
-                    <?php
-    $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
-    $result = $dbcon->query($sql);
-    
-    if ($result->num_rows > 0) {    
-        // head of table
-        echo "<table class='mb-0 table table-hover'>";
-        echo "<tr align='center'>";
-        echo "<th>รหัสการแจ้งปัญหา</th>";
-        echo "<th>ห้อง</th>";
-        echo "<th>สิ่งของ</th>";
-        echo "<th>Serial Number</th>";
-        echo "<th>รายละเอียด</th>";
-        echo "<th>ชื่อผู้แจ้งซ่อม</th>";
-        echo "<th>วันที่ และ เวลา</th>";
-        echo "<th>สถานะ</th>";
-        echo "<th>รับงาน</th>";
-        echo "</tr>";
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr align='center'>";
-            echo "<td>" . $row["id"] . " </td>";
-            echo "<td>" . $row["room"] . "</td>";
-            echo "<td>" . $row["item"] . "</td>";
-            echo "<td>" . $row["serial_num"] . "</td>";
-            echo "<td>" . $row["detail"] . "</td>";
-            echo "<td>" . $row["submitted_name"] . "</td>";
-            echo "<td>" . $row["created_at"] . "</td>";
-            echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
-            echo "<td><div class='dropdown d-inline-block'>
+                            <h5 class="card-title">การแจ้งซ่อมทั้งหมด</h5>
+                            <?php
+                            $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
+                            $result = $dbcon->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // head of table
+                                echo "<table class='mb-0 table table-hover'>";
+                                echo "<tr align='center'>";
+                                echo "<th>รหัสการแจ้งปัญหา</th>";
+                                echo "<th>ห้อง</th>";
+                                echo "<th>สิ่งของ</th>";
+                                echo "<th>Serial Number</th>";
+                                echo "<th>รายละเอียด</th>";
+                                echo "<th>ชื่อผู้แจ้งซ่อม</th>";
+                                echo "<th>วันที่ และ เวลา</th>";
+                                echo "<th>สถานะ</th>";
+                                echo "<th>รับงาน</th>";
+                                echo "</tr>";
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr align='center'>";
+                                    echo "<td>" . $row["id"] . " </td>";
+                                    echo "<td>" . $row["room"] . "</td>";
+                                    echo "<td>" . $row["item"] . "</td>";
+                                    echo "<td>" . $row["serial_num"] . "</td>";
+                                    echo "<td>" . $row["detail"] . "</td>";
+                                    echo "<td>" . $row["submitted_name"] . "</td>";
+                                    echo "<td>" . $row["created_at"] . "</td>";
+                                    echo "<td>" . "<div class='badge badge-info'>" . $row["job_status"] . "</div>" . "</td>";
+                                    echo "<td><div class='dropdown d-inline-block'>
                             <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
@@ -296,18 +296,18 @@ if (!isset($_SESSION['id'])) {
                             </div>
                             </div>
                             </td>";
-            echo "</tr>";
-            echo "<input hidden name='id' type='text' value='" . $row['id'] . "'>";
-        }
-        echo "</table>";
-    } else {
-        echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
-    }
+                                    echo "</tr>";
+                                    echo "<input hidden name='id' type='text' value='" . $row['id'] . "'>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
+                            }
 
-    ?>
-</div>
-</div>
-    
+                            ?>
+                        </div>
+                    </div>
+
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

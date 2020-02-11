@@ -13,7 +13,7 @@
         exit;
     }
     $name = $_POST['Name'];
-    $department = $_POST['Department'];
+    $department = 'Repair Man';
     $lastname = $_POST['Lastname'];
     $user_id = $_POST['Userid'];
 
@@ -38,8 +38,8 @@
     if ($result) {
         echo ("<script>console.log('$result')</script>");
         echo ("<script LANGUAGE='JavaScript'>
-            window.alert('Repairman Register Success!!');
-            window.location.href='form_repairmanregister.php';
+            window.alert('สมัครสมาชิกพนักงานสำเร็จ');
+            window.location.href='/helpdeskproject/admin/form_repairman.php';
             </script>");
     } else {
         echo "เกิดข้อผิดพลาด ". mysqli_error($dbcon);

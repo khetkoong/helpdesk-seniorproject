@@ -110,7 +110,6 @@ if (!isset($_SESSION['id'])) {
                         </button>
                     </span>
                 </div>
-
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
@@ -131,13 +130,13 @@ if (!isset($_SESSION['id'])) {
 
                                 <ul class="mm-show">
                                     <li>
-                                        <a href="/helpdeskproject/admin/allrepairman.php">
+                                        <a href="#" class="mm-active">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อพนักงานซ่อม
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="mm-active">
+                                        <a href="/helpdeskproject/admin/form_repairman.php">
                                             <i class="metismenu-icon"></i>
                                             เพิ่มช่างซ่อม
                                         </a>
@@ -166,7 +165,6 @@ if (!isset($_SESSION['id'])) {
                         </ul>
                     </div>
                 </div>
-
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
@@ -174,60 +172,89 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-home icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>เพิ่มช่างซ่อม
-                                    <div class="page-title-subheading">หน้าเพิ่มพนักงานซ่อม
+                                <div>หน้ารายละเอียดการแจ้งซ่อม
+                                    <div class="page-title-subheading">หน้ารายละเอียดจะแสดงข้อมูลต่างๆ ที่ผู้ใช้แจ้งซ่อมเอาไว้
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    แผนก: แอดมิน
+                    <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
+
                     <hr />
                     <br />
+                    <h2>
+                        <p>รายละเอียดการแจ้งซ่อม</p>
+                    </h2>
+                    <?php
+                    $user_id = $_POST['user_id'];
+                    $sql = "SELECT * FROM `users` WHERE user_id = '$user_id'";
+                    $result = $dbcon->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+
+                            $id = $row["id"];
+                            $user_id = $row["user_id"];
+                            $username = $row["username"];
+                            $name = $row["name"];
+                            $lastname = $row["lastname"];
+                            $role = $row["role"];
+                            $dep = $row["dep"];
+                            $created_at = $row["created_at"];
+                        }
+                    }
+                    ?>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
-                            <hr />
-                            <form name="register" id="register" action="repairmanregister.php" method="POST">
-                            <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : </label>
-                                    <div class="col-sm-10"><input type="text" name="Name" required autofocus placeholder="ชื่อ" type="text" class="form-control"></div>
+                            <h5 class="card-title">รายละเอียดพนักงานซ่อม : <?php echo "$id" ?></h5>
+                            <form class="">
+                                <div class="form-row">
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$id" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ห้อง</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$user_id" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ครุภัณฑ์</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$username" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="examplePassword11" class="">รหัสครุภัณฑ์</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$name" ?>" disabled></div>
+                                    </div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">นามสกุล : </label>
-                                    <div class="col-sm-10"><input type="text" name="Lastname" placeholder="นามสกุล" required autofocus class="form-control"></div>
+                                <div class="form-row">
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อผู้แจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$lastname" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ชื่อพนักงานที่รับงานซ่อม</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$role" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">สถานะการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$dep" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
+                                    </div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสพนักงาน : </label>
-                                    <div class="col-sm-10"><input type="text" name="Userid" required autofocus placeholder="รหัสพนักงาน" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้ : </label>
-                                    <div class="col-sm-10"><input type="text" name="Username" required autofocus placeholder="ชื่อผู้ใช้" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสผ่าน : </label>
-                                    <div class="col-sm-10"><input type="password" name="Password" id="pass" required placeholder="รหัสผ่าน" class="form-control" minlength="8"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ยืนยันรหัสผ่าน : </label>
-                                    <div class="col-sm-10"><input type="password" name="conPassword" required autofocus placeholder="ยืนยันรหัสผ่าน" class="form-control" minlength="8"></div>
-                                </div>
-
-                                
-                                <div class="position-relative row form-group">
-                                    <div class="col-sm-10 offset-sm-2">
-                                        <button class="btn btn-primary">ตกลง</button>
+                                <hr />
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <input type="button" value="ย้อนกลับ" class="btn btn-primary" onclick="history.back()">
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-            <!-- MAIN LAYOUT STOP HERE -->
+                    <!-- MAIN LAYOUT STOP HERE -->
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <script type="text/javascript" src="../assets/scripts/main.js"></script>
+        <script type="text/javascript" src="../assets/scripts/main.js"></script>
 </body>
 
 </html>
