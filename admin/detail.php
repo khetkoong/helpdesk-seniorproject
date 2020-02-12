@@ -238,7 +238,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="position-relative form-group"><label for="exampleEmail11" class="">สถานะการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$dep" ?>" disabled></div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างพนักงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
                                     </div>
                                 </div>
                                 <hr />
