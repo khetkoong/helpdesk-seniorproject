@@ -1,5 +1,4 @@
-# Helpdesk Project
-Helpdesk Project for Education
+# Helpdesk Senoir-Project
+ระบบแจ้งซ่อม เพื่อกรณีศึกษา
 
-This project for education or use it for free
-This project for free
+โปรเจคนี้จัดทำเพื่อเป็นกรณีศึกษาการ Coding ของการพัฒนาเว็บไซต์ (HTML, CSS, BOOTSTRAP, PHP, JAVASCRIPT)
