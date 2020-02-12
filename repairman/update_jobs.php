@@ -10,8 +10,7 @@ require '../connect.php';
 
 $jobid = $_POST['id'];
 $repairman = $_SESSION['name'];
-$repairman_id = $_SESSION['id'];
-
+$repairman_id = $_SESSION['user_id'];
 
 $query = "UPDATE ticket SET repairman = '$repairman', repairman_id = '$repairman_id', job_status = 'pending', pending_at = NOW() WHERE id = $jobid";
 $result = mysqli_query($dbcon, $query);

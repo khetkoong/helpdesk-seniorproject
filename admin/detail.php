@@ -209,36 +209,48 @@ if (!isset($_SESSION['id'])) {
                         }
                     }
                     ?>
+                    <?php
+                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id'";
+                        $result = $dbcon->query($sql);
+                        $row = $result->fetch_row();
+                        $jobtotal = $row[0];
+                    ?>
+                    <?php
+                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id' AND job_status = 'pending'";
+                        $result = $dbcon->query($sql);
+                        $row = $result->fetch_row();
+                        $jobpending = $row[0];
+                    ?>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h5 class="card-title">รายละเอียดพนักงานซ่อม : <?php echo "$id" ?></h5>
+                            <h5 class="card-title">รายละเอียดพนักงานซ่อม : <?php echo "$user_id" ?></h5>
                             <form class="">
                                 <div class="form-row">
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">รหัสการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$id" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="examplePassword11" class="">รหัสพนักงาน</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$user_id" ?>" disabled></div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ห้อง</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$user_id" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อผู้ใช้งาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$username" ?>" disabled></div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ครุภัณฑ์</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$username" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ชื่อพนักงาน</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$name" ?>" disabled></div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="examplePassword11" class="">รหัสครุภัณฑ์</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$name" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">นามสกุล</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$lastname" ?>" disabled></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อผู้แจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$lastname" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ชื่อพนักงานที่รับงานซ่อม</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$role" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">สถานะการแจ้งซ่อม</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$dep" ?>" disabled></div>
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">แผนก</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$dep" ?>" disabled></div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างพนักงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">จำนวนงานทั้งหมดที่กดรับ</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$jobtotal" ?>" disabled></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ปัญหาแจ้งซ่อมที่ยังไม่ได้แก้ไข</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$jobpending" ?>" disabled></div>
                                     </div>
                                 </div>
                                 <hr />

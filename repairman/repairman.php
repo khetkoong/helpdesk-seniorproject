@@ -171,7 +171,7 @@ if (!isset($_SESSION['id'])) {
                         </div>
                     </div>
 
-                    <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
+                    <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] ."</h1>" ?>
                     <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
 
                     <hr />
@@ -244,14 +244,14 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php
-                    $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
+                    $sql = "SELECT * FROM ticket WHERE job_status = 'waiting'";
                     $result = $dbcon->query($sql);  ?>
 
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <h5 class="card-title">การแจ้งซ่อมทั้งหมด</h5>
                             <?php
-                            $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, job_status FROM ticket WHERE job_status = 'waiting'";
+                            $sql = "SELECT * FROM ticket WHERE job_status = 'waiting'";
                             $result = $dbcon->query($sql);
 
                             if ($result->num_rows > 0) {

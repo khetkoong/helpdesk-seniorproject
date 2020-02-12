@@ -113,7 +113,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">เมนู</li>
+                        <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
@@ -121,22 +121,67 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_repairman.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
-                                    เพิ่มช่างซ่อม
+                                    พนักงานซ่อม
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อพนักงานซ่อม
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_repairman.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มช่างซ่อม
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_additem.php">
-                                    <i class="metismenu-icon pe-7s-plus"></i>
-                                    เพิ่มสิ่งของ
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-tools"></i>
+                                    สิ่งของ
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสิ่งของ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_additem.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสิ่งของ
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-file"></i>
-                                    เพิ่มสถานที่ปฏิบัติงาน
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    สถานที่ปฏิบัติงาน
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul class="mm-show">
+                                    <li>
+                                        <a href="/helpdeskproject/admin/allroom.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="mm-active">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
@@ -174,9 +219,9 @@ if (!isset($_SESSION['id'])) {
                         <div class="card-body">
                         <h5 class="card-title">เพิ่มสถานที่ปฏิบัติงาน</h5>
                             <hr />
-                            <form name="register" id="register" action="repairmanregister.php" method="POST">
+                            <form name="register" id="register" action="addroom.php" method="POST">
                                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อสถานที่ปฏิบัติงาน : </label>
-                                    <div class="col-sm-10"><input type="password" name="conPassword" required autofocus placeholder="เช่น ห้อง 201, ห้อง 577" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="room" required autofocus placeholder="เช่น ห้อง 201, ห้อง 577" class="form-control"></div>
                                 </div>
 
                                 

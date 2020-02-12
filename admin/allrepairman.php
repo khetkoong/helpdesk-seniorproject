@@ -114,21 +114,19 @@ if (!isset($_SESSION['id'])) {
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">เมนู</li>
+                        <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                     หน้าหลัก
                                 </a>
                             </li>
-                            <li>
                             <li class="mm-active">
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
                                     พนักงานซ่อม
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-
                                 <ul class="mm-show">
                                     <li>
                                         <a href="#" class="mm-active">
@@ -144,18 +142,47 @@ if (!isset($_SESSION['id'])) {
                                     </li>
                                 </ul>
                             </li>
-                            </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_additem.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-tools"></i>
-                                    เพิ่มสิ่งของ
+                                    สิ่งของ
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/allitem.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสิ่งของ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_additem.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสิ่งของ
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_addroom.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-display2"></i>
-                                    เพิ่มสถานที่ปฏิบัติงาน
+                                    สถานที่ปฏิบัติงาน
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_addroom.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
@@ -222,14 +249,6 @@ if (!isset($_SESSION['id'])) {
                             <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
                         </form>
 
-                        <form action='form_edit.php' method='post'>
-                            <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
-                            <input type='hidden' name='name' value='" . $row['name'] . "'>
-                            <input type='hidden' name='lastname' value='" . $row['lastname'] . "'>
-                            <input type='hidden' name='dep' value='" . $row['dep'] . "'>
-                            <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
-                        </form>
-
                         <form action='delete.php' method='post'>
                             <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
                             <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบพนักงานซ่อม</button>
@@ -249,6 +268,16 @@ if (!isset($_SESSION['id'])) {
                             ?>
                         </div>
                     </div>
+
+                    <!-- DROPDOWN EDIT REPAIRMAN -->
+                    <!-- <form action='form_edit.php' method='post'>
+                        <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
+                        <input type='hidden' name='name' value='" . $row['name'] . "'>
+                        <input type='hidden' name='lastname' value='" . $row['lastname'] . "'>
+                        <input type='hidden' name='dep' value='" . $row['dep'] . "'>
+                        <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
+                    </form> -->
+                    
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

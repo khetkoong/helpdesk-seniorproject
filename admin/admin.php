@@ -142,16 +142,46 @@ if (!isset($_SESSION['id'])) {
                                 </ul>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_additem.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-tools"></i>
-                                    เพิ่มสิ่งของ
+                                    สิ่งของ
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/allitem.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสิ่งของ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_additem.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสิ่งของ
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/form_addroom.php">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-display2"></i>
-                                    เพิ่มสถานที่ปฏิบัติงาน
+                                    สถานที่ปฏิบัติงาน
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/allroom.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_addroom.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสถานที่ปฏิบัติงาน
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/helpdeskproject/logout.php">
@@ -259,6 +289,8 @@ if (!isset($_SESSION['id'])) {
                                 <div class="card-body">
                                     <h5 class="card-title">ชาร์ตจำนวนการแจ้งซ่อมทั้งหมด</h5>
                                     <canvas id="job_status"></canvas>
+                                    <br />
+                                    <center><button id="save-btn">บันทึกรูปภาพ</button></center>
                                 </div>
                             </div>
                             <!-- <div class="main-card mb-3 card">
@@ -312,7 +344,12 @@ if (!isset($_SESSION['id'])) {
     $job_success = $row[0];
     ?>
     <script type="text/javascript" src="../assets/scripts/main.js"></script>
+    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js"></script>
+    <script type="text/javascript" src="../assets/scripts/Blob.js"></script>
+    <script type="text/javascript" src="../assets/scripts/FileSaver.min.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
     <script>
+
         var ctx = document.getElementById('job_status').getContext('2d');
         var job_status = new Chart(ctx, {
             type: 'pie',

@@ -114,7 +114,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">เมนู</li>
+                        <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
@@ -122,28 +122,25 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                             </li>
                             <li>
-                            <li class="mm-active">
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
                                     พนักงานซ่อม
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-
-                                <ul class="mm-show">
+                                <ul>
                                     <li>
-                                        <a href="/helpdeskproject/admin/allrepairman.php">
+                                        <a href="#">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อพนักงานซ่อม
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="mm-active">
+                                        <a href="/helpdeskproject/admin/form_repairman.php">
                                             <i class="metismenu-icon"></i>
                                             เพิ่มช่างซ่อม
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
                             </li>
                             <li>
                                 <a href="#">
@@ -151,9 +148,9 @@ if (!isset($_SESSION['id'])) {
                                     สิ่งของ
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul>
+                                <ul  class="mm-show">
                                     <li>
-                                        <a href="/helpdeskproject/admin/allitem.php">
+                                        <a href="#" class="mm-active">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสิ่งของ
                                         </a>
@@ -196,7 +193,7 @@ if (!isset($_SESSION['id'])) {
                         </ul>
                     </div>
                 </div>
-
+                
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
@@ -204,17 +201,16 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-add-user icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-home icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>เพิ่มช่างซ่อม
-                                    <div class="page-title-subheading">หน้าเพิ่มพนักงานซ่อม
+                                <div>หน้าหลัก
+                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลรายงานต่างๆเบื้องต้น
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     แผนก: แอดมิน
@@ -222,42 +218,61 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
-                            <hr />
-                            <form name="register" id="register" action="repairmanregister.php" method="POST">
-                            <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : </label>
-                                    <div class="col-sm-10"><input type="text" name="Name" required autofocus placeholder="ชื่อ" type="text" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">นามสกุล : </label>
-                                    <div class="col-sm-10"><input type="text" name="Lastname" placeholder="นามสกุล" required autofocus class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสพนักงาน : </label>
-                                    <div class="col-sm-10"><input type="text" name="Userid" required autofocus placeholder="รหัสพนักงาน" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้ : </label>
-                                    <div class="col-sm-10"><input type="text" name="Username" required autofocus placeholder="ชื่อผู้ใช้" class="form-control"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสผ่าน : </label>
-                                    <div class="col-sm-10"><input type="password" name="Password" id="pass" required placeholder="รหัสผ่าน" class="form-control" minlength="8"></div>
-                                </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ยืนยันรหัสผ่าน : </label>
-                                    <div class="col-sm-10"><input type="password" name="conPassword" required autofocus placeholder="ยืนยันรหัสผ่าน" class="form-control" minlength="8"></div>
-                                </div>
+                            <h5 class="card-title">รายชื่อสิ่งของ</h5>
+                            <?php
+                            $sql = "SELECT * FROM items";
+                            $result = $dbcon->query($sql);
 
-                                
-                                <div class="position-relative row form-group">
-                                    <div class="col-sm-10 offset-sm-2">
-                                        <button class="btn btn-primary">ตกลง</button>
-                                    </div>
-                                </div>
-                            </form>
+                            if ($result->num_rows > 0) {
+                                // head of table
+                                echo "<table class='mb-0 table table-hover'>";
+                                echo "<tr align='center'>";
+                                echo "<th>รหัสสิ่งของ</th>";
+                                echo "<th>ชื่อสิ่งของ</th>";
+                                echo "<th>จัดการ</th>";
+                                echo "</tr>";
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr align='center'>";
+                                    echo "<td>" . $row["item_id"] . " </td>";
+                                    echo "<td>" . $row["item_name"] . "</td>";
+                                    echo "<td><div class='dropdown d-inline-block'>
+                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
+                            <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
+
+                        <form action='deleteitem.php' method='post'>
+                            <input type='hidden' name='item_id' value='" . $row['item_id'] . "'>
+                            <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบสิ่งของ</button>
+                        </form>
+
+                            </div>
+                            </div>
+                            </td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
+                            }
+
+                            ?>
                         </div>
                     </div>
-            <!-- MAIN LAYOUT STOP HERE -->
+
+                    <!-- DROPDOWN EDIT REPAIRMAN -->
+                    <!-- <form action='form_edit.php' method='post'>
+                        <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
+                        <input type='hidden' name='name' value='" . $row['name'] . "'>
+                        <input type='hidden' name='lastname' value='" . $row['lastname'] . "'>
+                        <input type='hidden' name='dep' value='" . $row['dep'] . "'>
+                        <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
+                    </form> -->
+                    
+                    <!-- MAIN LAYOUT STOP HERE -->
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <script type="text/javascript" src="../assets/scripts/main.js"></script>
+        <script type="text/javascript" src="../assets/scripts/main.js"></script>
 </body>
 
 </html>

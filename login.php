@@ -23,6 +23,7 @@
         $row_user = mysqli_fetch_array($result_user, MYSQLI_ASSOC);
 
         $_SESSION['id'] = $row_user['id'];
+        $_SESSION['user_id'] = $row_user['user_id'];
         $_SESSION['username'] = $row_user['username'];
         $_SESSION['password'] = $row_user['password'];
         $_SESSION['name'] = $row_user['name'];

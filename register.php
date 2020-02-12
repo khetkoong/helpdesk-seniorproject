@@ -24,7 +24,7 @@
     // check duplicate username
     $checkdup = "SELECT * FROM `users` WHERE username = '".$username."'";
     $resultdup = mysqli_query($dbcon, $checkdup);
-    if($resultdup) {
+    if($resultdup->num_rows > 0) {
         echo ("<script LANGUAGE='JavaScript'>
             window.alert('ชื่อผู้ใช้นี้มีอยู่แล้ว');
             window.location.href='form_register.php';
