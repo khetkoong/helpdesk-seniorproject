@@ -174,7 +174,7 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="/helpdeskproject/admin/allroom.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสถานที่ปฏิบัติงาน
                                         </a>

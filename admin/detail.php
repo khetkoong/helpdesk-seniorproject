@@ -172,11 +172,11 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-home icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-id icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>หน้ารายละเอียดการแจ้งซ่อม
-                                    <div class="page-title-subheading">หน้ารายละเอียดจะแสดงข้อมูลต่างๆ ที่ผู้ใช้แจ้งซ่อมเอาไว้
+                                <div>รายชื่อพนักงานซ่อม
+                                    <div class="page-title-subheading">หน้ารายละเอียดจะแสดงข้อมูลต่างๆของพนักงานซ่อม
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ if (!isset($_SESSION['id'])) {
                     <hr />
                     <br />
                     <h2>
-                        <p>รายละเอียดการแจ้งซ่อม</p>
+                        <p>ข้อมูลพนักงานซ่อม</p>
                     </h2>
                     <?php
                     $user_id = $_POST['user_id'];

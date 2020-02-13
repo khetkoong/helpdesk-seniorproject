@@ -129,7 +129,7 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="/helpdeskproject/admin/allrepairman.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อพนักงานซ่อม
                                         </a>
@@ -171,7 +171,7 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="/helpdeskproject/admin/allroom.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสถานที่ปฏิบัติงาน
                                         </a>
@@ -201,11 +201,11 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-home icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>หน้าหลัก
-                                    <div class="page-title-subheading">หน้าหลักจะแสดงข้อมูลรายงานต่างๆเบื้องต้น
+                                <div>รายชื่อสิ่งของ
+                                    <div class="page-title-subheading">หน้ารายชื่อสิ่งของจะแสดงข้อมูลสิ่งของ
                                     </div>
                                 </div>
                             </div>
