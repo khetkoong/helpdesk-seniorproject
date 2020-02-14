@@ -128,7 +128,7 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="/helpdeskproject/admin/allrepairman.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อพนักงานซ่อม
                                         </a>
