@@ -286,25 +286,29 @@ if (!isset($_SESSION['id'])) {
                     <div class="row">
                         <div class="col-md-6">
                             <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">ชาร์ตจำนวนการแจ้งซ่อมทั้งหมด</h5>
+                                <div class="card-body" id="test">
+                                    <h5 class="card-title">ชาร์ตจำนวนการแจ้งซ่อมทั้งหมด
+                                        <button id="btnDownload" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                    </h5>
                                     <canvas id="job_status"></canvas>
-                                    <br />
-                                    <center><button id="save-btn">บันทึกรูปภาพ</button></center>
+                                    <br />      
                                 </div>
                             </div>
-                            <!-- <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Radar Chart</h5>
-                                    <canvas id="radar-chart"></canvas>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="col-md-6">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">ชาร์ตจำนวนผู้ใช้งั้นทั้งระบบ</h5>
+                                    <h5 class="card-title">ชาร์ตจำนวนผู้ใช้งั้นทั้งระบบ
+                                        <button id="btnDownload2" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                    </h5>
                                     <canvas id="role"></canvas>
+                                    <br />
                                 </div>
                             </div>
                             <!-- <div class="main-card mb-3 card">
@@ -345,10 +349,43 @@ if (!isset($_SESSION['id'])) {
     ?>
     <script type="text/javascript" src="../assets/scripts/main.js"></script>
     <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js"></script>
-    <script type="text/javascript" src="../assets/scripts/Blob.js"></script>
-    <script type="text/javascript" src="../assets/scripts/FileSaver.min.js"></script>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
+
+        const btnDownload = document.querySelector('#btnDownload');
+        const myCanvas = document.querySelector('#job_status');
+
+        const btnDownload2 = document.querySelector('#btnDownload2');
+        const myCanvas2 = document.querySelector('#role');
+
+        
+        btnDownload.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas.msSaveBlob(), "jobs.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas.toDataURL();
+                a.download = "jobs.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+
+        btnDownload2.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas2.msSaveBlob(), "users.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas2.toDataURL();
+                a.download = "users.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
 
         var ctx = document.getElementById('job_status').getContext('2d');
         var job_status = new Chart(ctx, {
@@ -371,6 +408,12 @@ if (!isset($_SESSION['id'])) {
                     ],
                     borderWidth: 1
                 }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'การแจ้งซ่อมทั้งหมด'
+                }
             }
         });
         var ctx = document.getElementById('role').getContext('2d');
@@ -399,6 +442,12 @@ if (!isset($_SESSION['id'])) {
                     ],
                     borderWidth: 1
                 }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'ผู้ใช้ทั้งหมด'
+                }
             }
         });
     </script>

@@ -218,7 +218,11 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h5 class="card-title">รายชื่อพนักงานซ่อม</h5>
+                            <h5 class="card-title">รายชื่อพนักงานซ่อม
+                                <a href="exportRepairman.php" class="btn btn-success pull-right">บันทึกรายงาน</a>
+                                <br />
+                                <br />
+                            </h5>
                             <?php
                             $sql = "SELECT * FROM users WHERE role = 'repairman'";
                             $result = $dbcon->query($sql);
