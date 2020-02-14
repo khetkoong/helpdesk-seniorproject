@@ -110,18 +110,19 @@ if (!isset($_SESSION['id'])) {
                         </button>
                     </span>
                 </div>
+
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                     <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">เมนู</li>
                             <li>
-                                <a href="#">
+                                <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                     หน้าหลัก
                                 </a>
                             </li>
                             <li>
-                                <a href="/helpdeskproject/admin/alluser.php">
+                                <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-id"></i>
                                     รายชื่อผู้ใช้งาน
                                 </a>
@@ -198,6 +199,7 @@ if (!isset($_SESSION['id'])) {
                         </ul>
                     </div>
                 </div>
+                
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
@@ -208,8 +210,8 @@ if (!isset($_SESSION['id'])) {
                                     <i class="pe-7s-id icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>รายชื่อพนักงานซ่อม
-                                    <div class="page-title-subheading">หน้ารายละเอียดจะแสดงข้อมูลต่างๆของพนักงานซ่อม
+                                <div>รายชื่อผู้ใช้งาน
+                                    <div class="page-title-subheading">หน้ารายชื่อผู้ใช้งานจะแสดงข้อมูลของผู้ใช้งาน
                                     </div>
                                 </div>
                             </div>
@@ -217,84 +219,75 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    <?php echo "แผนก : " . $_SESSION['department'] . "" ?><br />
-
+                    แผนก: แอดมิน
                     <hr />
                     <br />
-                    <h2>
-                        <p>ข้อมูลพนักงานซ่อม</p>
-                    </h2>
-                    <?php
-                    $user_id = $_POST['user_id'];
-                    $sql = "SELECT * FROM `users` WHERE user_id = '$user_id'";
-                    $result = $dbcon->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-
-                            $id = $row["id"];
-                            $user_id = $row["user_id"];
-                            $username = $row["username"];
-                            $name = $row["name"];
-                            $lastname = $row["lastname"];
-                            $role = $row["role"];
-                            $dep = $row["dep"];
-                            $created_at = $row["created_at"];
-                        }
-                    }
-                    ?>
-                    <?php
-                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id'";
-                        $result = $dbcon->query($sql);
-                        $row = $result->fetch_row();
-                        $jobtotal = $row[0];
-                    ?>
-                    <?php
-                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id' AND job_status = 'pending'";
-                        $result = $dbcon->query($sql);
-                        $row = $result->fetch_row();
-                        $jobpending = $row[0];
-                    ?>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h5 class="card-title">รายละเอียดพนักงานซ่อม : <?php echo "$user_id" ?></h5>
-                            <form class="">
-                                <div class="form-row">
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="examplePassword11" class="">รหัสพนักงาน</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$user_id" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ชื่อผู้ใช้งาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$username" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="examplePassword11" class="">ชื่อพนักงาน</label><input name="text" id="examplePassword11" placeholder="-" type="text" class="form-control" value="<?php echo "$name" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">นามสกุล</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$lastname" ?>" disabled></div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">แผนก</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$dep" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">เวลาที่สร้างพนักงาน</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$created_at" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">จำนวนงานทั้งหมดที่กดรับ</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$jobtotal" ?>" disabled></div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="position-relative form-group"><label for="exampleEmail11" class="">ปัญหาแจ้งซ่อมที่ยังไม่ได้แก้ไข</label><input name="text" id="exampleEmail11" placeholder="-" type="text" class="form-control" value="<?php echo "$jobpending" ?>" disabled></div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <input type="button" value="ย้อนกลับ" class="btn btn-primary" onclick="history.back()">
-                                    </div>
-                                </div>
-                            </form>
+                            <h5 class="card-title">รายชื่อผู้ใช้งาน
+                                <a href="exportUser.php" class="btn btn-success pull-right">บันทึกรายงาน</a>
+                                <br />
+                                <br />
+                            </h5>
+                            <?php
+                            $sql = "SELECT * FROM users WHERE role = 'member'";
+                            $result = $dbcon->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // head of table
+                                echo "<table class='mb-0 table table-hover'>";
+                                echo "<tr align='center'>";
+                                echo "<th>รหัสพนักงาน</th>";
+                                echo "<th>ชื่อ</th>";
+                                echo "<th>นามสกุล</th>";
+                                echo "<th>แผนก</th>";
+                                echo "<th>จัดการ</th>";
+                                echo "</tr>";
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr align='center'>";
+                                    echo "<td>" . $row["user_id"] . " </td>";
+                                    echo "<td>" . $row["name"] . "</td>";
+                                    echo "<td>" . $row["lastname"] . "</td>";
+                                    echo "<td>" . $row["dep"] . "</td>";
+                                    echo "<td><div class='dropdown d-inline-block'>
+                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
+                            <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
+
+                            <form action='detail.php' method='post'>
+                            <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
+                            <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
+                        </form>
+
+                        <form action='delete.php' method='post'>
+                            <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
+                            <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบพนักงานซ่อม</button>
+                        </form>
+
+                            </div>
+                            </div>
+                            </td>";
+                                    echo "</tr>";
+                                    echo "<input hidden name='id' type='text' value='" . $row['id'] . "'>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
+                            }
+                            
+                            ?>
                         </div>
                     </div>
+
+                    <!-- DROPDOWN EDIT REPAIRMAN -->
+                    <!-- <form action='form_edit.php' method='post'>
+                        <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
+                        <input type='hidden' name='name' value='" . $row['name'] . "'>
+                        <input type='hidden' name='lastname' value='" . $row['lastname'] . "'>
+                        <input type='hidden' name='dep' value='" . $row['dep'] . "'>
+                        <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
+                    </form> -->
+                    
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

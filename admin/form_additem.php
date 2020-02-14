@@ -113,11 +113,17 @@ if (!isset($_SESSION['id'])) {
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                        <li class="app-sidebar__heading">เมนู</li>
+                            <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                     หน้าหลัก
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/helpdeskproject/admin/alluser.php">
+                                    <i class="metismenu-icon pe-7s-id"></i>
+                                    รายชื่อผู้ใช้งาน
                                 </a>
                             </li>
                             <li>
@@ -147,7 +153,7 @@ if (!isset($_SESSION['id'])) {
                                     สิ่งของ
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul  class="mm-show">
+                                <ul class="mm-show">
                                     <li>
                                         <a href="/helpdeskproject/admin/allitem.php">
                                             <i class="metismenu-icon"></i>
@@ -209,7 +215,7 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     แผนก: แอดมิน
@@ -217,7 +223,7 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">เพิ่มสิ่งของ</h5>
+                            <h5 class="card-title">เพิ่มสิ่งของ</h5>
                             <hr />
                             <form name="register" id="register" action="additem.php" method="POST">
                                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อสิ่งของ : </label>
@@ -231,11 +237,11 @@ if (!isset($_SESSION['id'])) {
                             </form>
                         </div>
                     </div>
-            <!-- MAIN LAYOUT STOP HERE -->
+                    <!-- MAIN LAYOUT STOP HERE -->
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <script type="text/javascript" src="../assets/scripts/main.js"></script>
+        <script type="text/javascript" src="../assets/scripts/main.js"></script>
 </body>
 
 </html>

@@ -122,6 +122,11 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                             </li>
                             <li>
+                                <a href="/helpdeskproject/admin/alluser.php">
+                                    <i class="metismenu-icon pe-7s-id"></i>
+                                    รายชื่อผู้ใช้งาน
+                                </a>
+                            </li>
                             <li class="mm-active">
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
@@ -214,7 +219,7 @@ if (!isset($_SESSION['id'])) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     แผนก: แอดมิน
@@ -222,10 +227,10 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                        <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
+                            <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
                             <hr />
                             <form name="register" id="register" action="repairmanregister.php" method="POST">
-                            <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : </label>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : </label>
                                     <div class="col-sm-10"><input type="text" name="Name" required autofocus placeholder="ชื่อ" type="text" class="form-control"></div>
                                 </div>
                                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">นามสกุล : </label>
@@ -244,7 +249,7 @@ if (!isset($_SESSION['id'])) {
                                     <div class="col-sm-10"><input type="password" name="conPassword" required autofocus placeholder="ยืนยันรหัสผ่าน" class="form-control" minlength="8"></div>
                                 </div>
 
-                                
+
                                 <div class="position-relative row form-group">
                                     <div class="col-sm-10 offset-sm-2">
                                         <button class="btn btn-primary">ตกลง</button>
@@ -253,11 +258,11 @@ if (!isset($_SESSION['id'])) {
                             </form>
                         </div>
                     </div>
-            <!-- MAIN LAYOUT STOP HERE -->
+                    <!-- MAIN LAYOUT STOP HERE -->
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <script type="text/javascript" src="../assets/scripts/main.js"></script>
+        <script type="text/javascript" src="../assets/scripts/main.js"></script>
 </body>
 
 </html>

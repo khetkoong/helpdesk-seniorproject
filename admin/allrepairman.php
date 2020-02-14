@@ -121,6 +121,12 @@ if (!isset($_SESSION['id'])) {
                                     หน้าหลัก
                                 </a>
                             </li>
+                            <li>
+                                <a href="/helpdeskproject/admin/alluser.php">
+                                    <i class="metismenu-icon pe-7s-id"></i>
+                                    รายชื่อผู้ใช้งาน
+                                </a>
+                            </li>
                             <li class="mm-active">
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>

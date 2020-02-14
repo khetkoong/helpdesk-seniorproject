@@ -121,6 +121,12 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                             </li>
                             <li>
+                                <a href="/helpdeskproject/admin/alluser.php">
+                                    <i class="metismenu-icon pe-7s-id"></i>
+                                    รายชื่อผู้ใช้งาน
+                                </a>
+                            </li>
+                            <li>
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-add-user"></i>
                                     พนักงานซ่อม
@@ -293,8 +299,8 @@ if (!isset($_SESSION['id'])) {
                                         <br />
                                         <hr />
                                     </h5>
-                                    <canvas id="job_status"></canvas>
-                                    <br />      
+                                        <canvas id="job_status2"></canvas>
+                                    <br />
                                 </div>
                             </div>
                         </div>
@@ -307,10 +313,11 @@ if (!isset($_SESSION['id'])) {
                                         <br />
                                         <hr />
                                     </h5>
-                                    <canvas id="role"></canvas>
+                                        <canvas id="role2"></canvas>
                                     <br />
                                 </div>
                             </div>
+
                             <!-- <div class="main-card mb-3 card">
                                 <div class="card-body">
                                     <h5 class="card-title">Polar Chart</h5>
@@ -320,10 +327,24 @@ if (!isset($_SESSION['id'])) {
                         </div>
                     </div>
 
+                    <div class="row">
+                        <canvas hidden id="job_status"></canvas>
+                        <canvas hidden id="role"></canvas>
+                    </div>
+
+                    <!-- <div class="main-card mb-3 card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Polar Chart</h5>
+                                    <canvas id="polar-chart"></canvas>
+                                </div>
+                            </div> -->
                 </div>
             </div>
-            <!-- MAIN LAYOUT STOP HERE -->
+
         </div>
+    </div>
+    <!-- MAIN LAYOUT STOP HERE -->
+    </div>
     </div>
     </div>
     <?php
@@ -351,14 +372,15 @@ if (!isset($_SESSION['id'])) {
     <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js"></script>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
-
         const btnDownload = document.querySelector('#btnDownload');
         const myCanvas = document.querySelector('#job_status');
+
+
 
         const btnDownload2 = document.querySelector('#btnDownload2');
         const myCanvas2 = document.querySelector('#role');
 
-        
+
         btnDownload.addEventListener("click", function() {
             console.log('click')
             if (window.navigator.msSaveBlob) {
@@ -387,11 +409,41 @@ if (!isset($_SESSION['id'])) {
             }
         });
 
+        var ctx = document.getElementById('job_status2').getContext('2d');
+        var job_status2 = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['การแจ้งซ่อมสถานะรอ [<?php echo "$job_total" ?>]', 'การแจ้งซ่อมสถานะกำลังดำเนินการ [<?php echo "$job_waiting" ?>]', 'การแจ้งซ่อมสถานะเสร็จแล้ว [<?php echo "$job_success" ?>]'],
+                datasets: [{
+                    label: '# of Jobs',
+                    data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
+                    backgroundColor: [
+                        'rgba(60, 51, 255, 1)',
+                        'rgba(255, 227, 51, 1)',
+                        'rgba(24, 231, 58, 1)',
+
+                    ],
+                    borderColor: [
+                        'rgba(60, 51, 255, 1)',
+                        'rgba(255, 227, 51, 1)',
+                        'rgba(24, 231, 58, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'การแจ้งซ่อมทั้งหมด'
+                }
+            }
+        });
+
         var ctx = document.getElementById('job_status').getContext('2d');
         var job_status = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['การแจ้งซ่อมสถานะรอ', 'การแจ้งซ่อมสถานะกำลังดำเนินการ', 'การแจ้งซ่อมสถานะเสร็จแล้ว'],
+                labels: ['การแจ้งซ่อมสถานะรอ [<?php echo "$job_total" ?>]', 'การแจ้งซ่อมสถานะกำลังดำเนินการ [<?php echo "$job_waiting" ?>]', 'การแจ้งซ่อมสถานะเสร็จแล้ว [<?php echo "$job_success" ?>]'],
                 datasets: [{
                     label: '# of Jobs',
                     data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
@@ -420,7 +472,42 @@ if (!isset($_SESSION['id'])) {
         var role = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['แอดมิน', 'พนักงานซ่อม', 'ผู้ใช้งาน'],
+                labels: ['แอดมิน [<?php echo "$user_total" ?>]', 'พนักงานซ่อม [<?php echo "$user_member" ?>]', 'ผู้ใช้งาน [<?php echo "$user_repairman" ?>]'],
+                datasets: [{
+                    label: '# of Users',
+                    data: [<?php echo "$user_total" ?>, <?php echo "$user_member" ?>, <?php echo "$user_repairman" ?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'ผู้ใช้ทั้งหมด'
+                }
+            }
+        });
+
+        var ctx = document.getElementById('role2').getContext('2d');
+        var role2 = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['แอดมิน [<?php echo "$user_total" ?>]', 'พนักงานซ่อม [<?php echo "$user_member" ?>]', 'ผู้ใช้งาน [<?php echo "$user_repairman" ?>]'],
                 datasets: [{
                     label: '# of Users',
                     data: [<?php echo "$user_total" ?>, <?php echo "$user_member" ?>, <?php echo "$user_repairman" ?>],
