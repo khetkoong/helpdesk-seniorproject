@@ -238,7 +238,7 @@ if ($_SESSION['role'] != 'member') {
                                 // Free result set
                                 mysqli_free_result($result);
                             } else {
-                                echo "ยังไม่มีการซ่อมสถานะ Pending <br />";
+                                echo "ขนะนี้ยังไม่มีรายการการประเมิน <br />";
                                 echo "กรุณารอพนักงานซ่อมดำเนินการ";
                             }
                             ?>
