@@ -26,16 +26,14 @@
 	error_reporting(E_ALL);
 	date_default_timezone_set("Asia/Bangkok");
 
-	$sToken = "7NB4M8RAe0uguDxNvBEoFbECfyXXy5i7KbOvvOW5dnK";
+	$sToken = "JczwUZmHhG9mAs2M6BE4Q8TkJAIriLRYR22WSTOU3rE";
     $sMessage = "Job Alert
--------------------------------------------------------------
-Room: $room
-Product: $item
-Detail: $detail
-Serial Number: $serial_num
-Submitted by: $submitted_name
-Submitted at: $date
--------------------------------------------------------------";
+ห้อง: $room
+สิ่งของ: $item
+รายละเอียด: $detail
+รหัสสิ่งของ: $serial_num
+แจ้งซ่อมโดย: $submitted_name
+เวลา: $date";
 
 	$chOne = curl_init(); 
 	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
