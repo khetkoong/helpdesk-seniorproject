@@ -146,7 +146,7 @@ if (!isset($_SESSION['id'])) {
                             </li>
                             <li>
                                 <a href="/helpdeskproject/user/detailrate.php">
-                                    <i class="metismenu-icon pe-7s-check"></i>
+                                    <i class="metismenu-icon pe-7s-note2"></i>
                                     ประเมินการซ่อมของพนักงาน
                                 </a>
                             </li>

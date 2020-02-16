@@ -225,6 +225,9 @@ if (!isset($_SESSION['id'])) {
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <h5 class="card-title">รายชื่อสิ่งของ</h5>
+                            <a href="exportItem.php" class="btn btn-success pull-right">บันทึกรายงาน</a>
+                            <br />
+                            <br />
                             <?php
                             $sql = "SELECT * FROM items";
                             $result = $dbcon->query($sql);

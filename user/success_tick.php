@@ -148,6 +148,12 @@ if ($_SESSION['role'] != 'member') {
                                 </a>
                             </li>
                             <li>
+                                <a href="/helpdeskproject/user/detailrate.php">
+                                    <i class="metismenu-icon pe-7s-note2"></i>
+                                    ประเมินการซ่อมของพนักงาน
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
