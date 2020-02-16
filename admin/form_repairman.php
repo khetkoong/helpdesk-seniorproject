@@ -19,7 +19,7 @@ if (!isset($_SESSION['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Helpdesk: User</title>
+    <title>Helpdesk: Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -193,6 +193,27 @@ if (!isset($_SESSION['id'])) {
                                 </ul>
                             </li>
                             <li>
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-notebook"></i>
+                                    สาขา
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/alldepartment.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสาขา
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_adddep.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสาขา
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
@@ -220,8 +241,8 @@ if (!isset($_SESSION['id'])) {
                         </div>
                     </div>
 
-                    <!-- MAIN LAYOUT START HERE -->
-                    <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
+                   <!-- MAIN LAYOUT START HERE -->
+                   <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     แผนก: Admin
                     <hr />
                     <br />
@@ -230,22 +251,28 @@ if (!isset($_SESSION['id'])) {
                             <h5 class="card-title">เพิ่มพนักงานซ่อม</h5>
                             <hr />
                             <form name="register" id="register" action="repairmanregister.php" method="POST">
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : </label>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อ : <small class="text-danger">*</small></label></label>
                                     <div class="col-sm-10"><input type="text" name="Name" required autofocus placeholder="ชื่อ" type="text" class="form-control"></div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">นามสกุล : </label>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">นามสกุล : <small class="text-danger">*</small></label></label>
                                     <div class="col-sm-10"><input type="text" name="Lastname" placeholder="นามสกุล" required autofocus class="form-control"></div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสพนักงาน : </label>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสพนักงาน : <small class="text-danger">*</small></label></label>
                                     <div class="col-sm-10"><input type="text" name="Userid" required autofocus placeholder="รหัสพนักงาน" class="form-control"></div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้ : </label>
-                                    <div class="col-sm-10"><input type="text" name="Username" required autofocus placeholder="ชื่อผู้ใช้" class="form-control"></div>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้ : <small class="text-danger">*</small></label></label>
+                                    <div class="col-sm-10"><input type="text" name="Username" required autofocus placeholder="ชื่อผู้ใช้" class="form-control"><small>
+                                            <div class="text-danger">** ใช้สำหรับเข้าสู่ระบบ</div>
+                                        </small></div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสผ่าน : </label>
-                                    <div class="col-sm-10"><input type="password" name="Password" id="pass" required placeholder="รหัสผ่าน" class="form-control" minlength="8"></div>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">รหัสผ่าน : <small class="text-danger">*</small></label></label>
+                                    <div class="col-sm-10"><input type="password" name="Password" id="pass" required placeholder="รหัสผ่าน" class="form-control" minlength="8">
+                                    <small>
+                                    <div class="text-danger">** ใช้สำหรับเข้าสู่ระบบ</div>
+                                    <div class="text-danger">** รหัสผ่านไม่ต่ำกว่า 8 ตัว</div>
+                                </small></div>
                                 </div>
-                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ยืนยันรหัสผ่าน : </label>
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">ยืนยันรหัสผ่าน : <small class="text-danger">*</small></label></label>
                                     <div class="col-sm-10"><input type="password" name="conPassword" required autofocus placeholder="ยืนยันรหัสผ่าน" class="form-control" minlength="8"></div>
                                 </div>
 
