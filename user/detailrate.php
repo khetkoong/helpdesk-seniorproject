@@ -149,7 +149,7 @@ if ($_SESSION['role'] != 'member') {
                             </li>
                             <li>
                                 <a href="#" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-check"></i>
+                                    <i class="metismenu-icon pe-7s-note2"></i>
                                     ประเมินการซ่อมของพนักงาน
                                 </a>
                             </li>
@@ -169,7 +169,7 @@ if ($_SESSION['role'] != 'member') {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-tools icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
                                 <div>หน้าประเมินพนักงานซ่อม
