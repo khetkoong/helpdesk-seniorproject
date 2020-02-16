@@ -225,7 +225,7 @@ if (!isset($_SESSION['id'])) {
                             <div class="card mb-3 widget-content bg-primary">
                                 <div class="widget-content-wrapper text-white">
                                     <div class="widget-content-left">
-                                        <div class="widget-heading">ผู้ใช้งาน</div>
+                                        <div class="widget-heading">แอดมิน</div>
                                         <div class="widget-subheading">ทั้งหมด</div>
                                     </div>
                                     <div class="widget-content-right">
@@ -440,11 +440,11 @@ if (!isset($_SESSION['id'])) {
         });
 
         <?php
-            $sql = "SELECT COUNT(*) FROM users";
-            $result = $dbcon->query($sql);
-            $row = $result->fetch_row();
-            echo $row[0];
-            $member = $row[0];
+        $sql = "SELECT COUNT(*) FROM users";
+        $result = $dbcon->query($sql);
+        $row = $result->fetch_row();
+        echo $row[0];
+        $member = $row[0];
         ?>
 
         var ctx = document.getElementById('job_status').getContext('2d');
