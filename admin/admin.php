@@ -317,13 +317,6 @@ if (!isset($_SESSION['id'])) {
                                     <br />
                                 </div>
                             </div>
-
-                            <!-- <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Polar Chart</h5>
-                                    <canvas id="polar-chart"></canvas>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
 
