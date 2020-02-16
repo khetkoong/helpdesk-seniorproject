@@ -112,7 +112,7 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
-                        <ul class="vertical-nav-menu">
+                    <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="#">
@@ -239,36 +239,20 @@ if (!isset($_SESSION['id'])) {
                             $role = $row["role"];
                             $dep = $row["dep"];
                             $created_at = $row["created_at"];
-
-                            $speed3 = $row['speed_3'];
-                            $speed2 = $row['speed_2'];
-                            $speed1 = $row['speed_1'];
-
-                            $perfect3 = $row['perfect_3'];
-                            $perfect2 = $row['perfect_2'];
-                            $perfect1 = $row['perfect_1'];
-
-                            $talk3 = $row['talk_3'];
-                            $talk2 = $row['talk_2'];
-                            $talk1 = $row['talk_1'];
-
-                            $guide3 = $row['guide_3'];
-                            $guide2 = $row['guide_2'];
-                            $guide1 = $row['guide_1'];
                         }
                     }
                     ?>
                     <?php
-                    $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id'";
-                    $result = $dbcon->query($sql);
-                    $row = $result->fetch_row();
-                    $jobtotal = $row[0];
+                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id'";
+                        $result = $dbcon->query($sql);
+                        $row = $result->fetch_row();
+                        $jobtotal = $row[0];
                     ?>
                     <?php
-                    $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id' AND job_status = 'pending'";
-                    $result = $dbcon->query($sql);
-                    $row = $result->fetch_row();
-                    $jobpending = $row[0];
+                        $sql = "SELECT COUNT(*) FROM ticket WHERE repairman_id = '$user_id' AND job_status = 'pending'";
+                        $result = $dbcon->query($sql);
+                        $row = $result->fetch_row();
+                        $jobpending = $row[0];
                     ?>
                     <div class="main-card mb-3 card">
                         <div class="card-body">
@@ -303,70 +287,6 @@ if (!isset($_SESSION['id'])) {
                                     </div>
                                 </div>
                                 <hr />
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="main-card mb-3 card">
-                                            <div class="card-body" id="test">
-                                                <h5 class="card-title">ความเร็วในการทำงาน
-                                                    <button id="btnDownload" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
-                                                    <br />
-                                                    <br />
-                                                    <hr />
-                                                </h5>
-                                                <canvas id="speed"></canvas>
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="main-card mb-3 card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">ความเรียบร้อยของการทำงาน
-                                                    <button id="btnDownload2" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
-                                                    <br />
-                                                    <br />
-                                                    <hr />
-                                                </h5>
-                                                <canvas id="perfect"></canvas>
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="main-card mb-3 card">
-                                            <div class="card-body" id="test">
-                                                <h5 class="card-title">การปฏิสัมพันธ์กับผู้ใช้
-                                                    <button id="btnDownload3" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
-                                                    <br />
-                                                    <br />
-                                                    <hr />
-                                                </h5>
-                                                <canvas id="talk"></canvas>
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="main-card mb-3 card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">การให้คำแนะนำ, แจ้งอาการของเครื่อง และอธิบายถึงการแก้ปัญหา
-                                                    <button id="btnDownload4" type='button' class='btn btn-success pull-right'>บันทึกรูปภาพ</button>
-                                                    <br />
-                                                    <br />
-                                                    <hr />
-                                                </h5>
-                                                <canvas id="guide"></canvas>
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr />
                                 <div class="form-row">
                                     <div class="col-md-12">
                                         <input type="button" value="ย้อนกลับ" class="btn btn-primary" onclick="history.back()">
@@ -380,130 +300,6 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
         <script type="text/javascript" src="../assets/scripts/main.js"></script>
-        <script>
-
-            var ctx = document.getElementById('speed').getContext('2d');
-            var job_status2 = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['ดีมาก [<?php echo "$speed3" ?>]', 'ดี [<?php echo "$speed2" ?>]', 'พอใช้ [<?php echo "$speed1" ?>]'],
-                    datasets: [{
-                        label: '# of Jobs',
-                        data: [<?php echo "$speed3" ?>, <?php echo "$speed2" ?>, <?php echo "$speed1" ?>],
-                        backgroundColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-
-                        ],
-                        borderColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'ความเร็วในการทำงาน'
-                    }
-                }
-            });
-
-            var ctx = document.getElementById('perfect').getContext('2d');
-            var job_status2 = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['ดีมาก [<?php echo "$perfect3" ?>]', 'ดี [<?php echo "$perfect2" ?>]', 'พอใช้ [<?php echo "$perfect1" ?>]'],
-                    datasets: [{
-                        label: '# of Jobs',
-                        data: [<?php echo "$perfect3" ?>, <?php echo "$perfect2" ?>, <?php echo "$perfect1" ?>],
-                        backgroundColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-
-                        ],
-                        borderColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'ความเรียบร้อยของการทำงาน'
-                    }
-                }
-            });
-
-            var ctx = document.getElementById('talk').getContext('2d');
-            var job_status2 = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['ดีมาก [<?php echo "$talk3" ?>]', 'ดี [<?php echo "$talk2" ?>]', 'พอใช้ [<?php echo "$talk1" ?>]'],
-                    datasets: [{
-                        label: '# of Jobs',
-                        data: [<?php echo "$talk3" ?>, <?php echo "$talk2" ?>, <?php echo "$talk1" ?>],
-                        backgroundColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-
-                        ],
-                        borderColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'การปฏิสัมพันธ์กับผู้ใช้'
-                    }
-                }
-            });
-
-            var ctx = document.getElementById('guide').getContext('2d');
-            var job_status2 = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['ดีมาก [<?php echo "$guide3" ?>]', 'ดี [<?php echo "$guide2" ?>]', 'พอใช้ [<?php echo "$guide1" ?>]'],
-                    datasets: [{
-                        label: '# of Jobs',
-                        data: [<?php echo "$guide3" ?>, <?php echo "$guide2" ?>, <?php echo "$guide1" ?>],
-                        backgroundColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-
-                        ],
-                        borderColor: [
-                            'rgba(60, 51, 255, 1)',
-                            'rgba(255, 227, 51, 1)',
-                            'rgba(24, 231, 58, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'การให้คำแนะนำ, แจ้งอาการของเครื่อง และอธิบายถึงการแก้ปัญหา'
-                    }
-                }
-            });
-
-        </script>
-
 </body>
 
 </html>
