@@ -232,7 +232,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM users";
+                                                $sql = "SELECT COUNT(*) FROM users WHERE role ='admin'";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
@@ -254,7 +254,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'member'";
+                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'repairman'";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
@@ -276,7 +276,7 @@ if (!isset($_SESSION['id'])) {
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
                                                 $name = $_SESSION['name'];
-                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'repairman'";
+                                                $sql = "SELECT COUNT(*) FROM users WHERE role = 'member'";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
                                                 echo $row[0];
@@ -299,7 +299,7 @@ if (!isset($_SESSION['id'])) {
                                         <br />
                                         <hr />
                                     </h5>
-                                        <canvas id="job_status2"></canvas>
+                                    <canvas id="job_status2"></canvas>
                                     <br />
                                 </div>
                             </div>
@@ -313,7 +313,7 @@ if (!isset($_SESSION['id'])) {
                                         <br />
                                         <hr />
                                     </h5>
-                                        <canvas id="role2"></canvas>
+                                    <canvas id="role2"></canvas>
                                     <br />
                                 </div>
                             </div>
@@ -439,6 +439,14 @@ if (!isset($_SESSION['id'])) {
             }
         });
 
+        <?php
+            $sql = "SELECT COUNT(*) FROM users";
+            $result = $dbcon->query($sql);
+            $row = $result->fetch_row();
+            echo $row[0];
+            $member = $row[0];
+        ?>
+
         var ctx = document.getElementById('job_status').getContext('2d');
         var job_status = new Chart(ctx, {
             type: 'pie',
@@ -533,7 +541,7 @@ if (!isset($_SESSION['id'])) {
             options: {
                 title: {
                     display: true,
-                    text: 'ผู้ใช้ทั้งหมด'
+                    text: 'ผู้ใช้ทั้งหมด [<?php echo $member ?>]'
                 }
             }
         });

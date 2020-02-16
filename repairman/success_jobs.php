@@ -10,7 +10,7 @@
     $id = $_POST['id'];
     $repairman = $_SESSION['name'];
 
-    $query = "UPDATE ticket SET job_status = 'success', success_at = NOW() WHERE id = $id";
+    $query = "UPDATE ticket SET job_status = 'success', success_at = NOW(), success_at_date = MONTH(NOW()) WHERE id = $id";
     $result = mysqli_query($dbcon, $query);
 
     if ($result) {
