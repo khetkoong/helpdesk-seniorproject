@@ -114,7 +114,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">เมนู</li>
+                        <li class="app-sidebar__heading">เมนู</li>
                             <li>
                                 <a href="/helpdeskproject/admin/admin.php">
                                     <i class="metismenu-icon pe-7s-home"></i>
@@ -156,7 +156,7 @@ if (!isset($_SESSION['id'])) {
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/helpdeskproject/admin/allitem.php">
+                                        <a href="#" class="mm-active">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสิ่งของ
                                         </a>
@@ -175,9 +175,9 @@ if (!isset($_SESSION['id'])) {
                                     สถานที่ปฏิบัติงาน
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul class="mm-show">
+                                <ul>
                                     <li>
-                                        <a href="#" class="mm-active">
+                                        <a href="/helpdeskproject/admin/allroom.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสถานที่ปฏิบัติงาน
                                         </a>
@@ -191,6 +191,27 @@ if (!isset($_SESSION['id'])) {
                                 </ul>
                             </li>
                             <li>
+                                <a href="#" >
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    สาขา
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul  class="mm-show">
+                                    <li>
+                                        <a href="#" class="mm-active">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสาขา
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_adddep.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสาขา
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
@@ -199,7 +220,7 @@ if (!isset($_SESSION['id'])) {
                         </ul>
                     </div>
                 </div>
-
+                
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
@@ -210,8 +231,8 @@ if (!isset($_SESSION['id'])) {
                                     <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>รายชื่อสถานที่ปฏิบัติงาน
-                                    <div class="page-title-subheading">หน้ารายชื่อสถานที่ปฏิบัติงานจะแสดงรายชื่อสถานที่ปฏิบัติงาน
+                                <div>รายชื่อสาขา
+                                    <div class="page-title-subheading">หน้ารายชื่อสาขาต่างๆ 
                                     </div>
                                 </div>
                             </div>
@@ -224,31 +245,34 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h5 class="card-title">รายชื่อสถานที่ปฏิบัติงาน</h5>
+                            <h5 class="card-title">รายชื่อสาขา</h5>
+                            <a href="exportItem.php" class="btn btn-success pull-right">บันทึกรายงาน</a>
+                            <br />
+                            <br />
                             <?php
-                            $sql = "SELECT * FROM location";
+                            $sql = "SELECT * FROM dep";
                             $result = $dbcon->query($sql);
 
                             if ($result->num_rows > 0) {
                                 // head of table
                                 echo "<table class='mb-0 table table-hover'>";
                                 echo "<tr align='center'>";
-                                echo "<th>รหัสสถานที่ปฏิบัติงาน</th>";
-                                echo "<th>ชื่อสถาที่ปฏิบัติงาน</th>";
+                                echo "<th>รหัสสาขา</th>";
+                                echo "<th>ชื่อสาขา</th>";
                                 echo "<th>จัดการ</th>";
                                 echo "</tr>";
                                 // output data of each row
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<tr align='center'>";
-                                    echo "<td>" . $row["room_id"] . " </td>";
-                                    echo "<td>" . $row["room_name"] . "</td>";
+                                    echo "<td>" . $row["dep_id"] . " </td>";
+                                    echo "<td>" . $row["dep_name"] . "</td>";
                                     echo "<td><div class='dropdown d-inline-block'>
                             <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
-                        <form action='deleteroom.php' method='post'>
-                            <input type='hidden' name='room_id' value='" . $row['room_id'] . "'>
-                            <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบสถานที่ปฏิบัติงาน</button>
+                        <form action='deletedep.php' method='post'>
+                            <input type='hidden' name='dep_id' value='" . $row['dep_id'] . "'>
+                            <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบสาขา</button>
                         </form>
 
                             </div>
@@ -273,7 +297,7 @@ if (!isset($_SESSION['id'])) {
                         <input type='hidden' name='dep' value='" . $row['dep'] . "'>
                         <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
                     </form> -->
-
+                    
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

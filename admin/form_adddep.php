@@ -110,7 +110,6 @@ if (!isset($_SESSION['id'])) {
                         </button>
                     </span>
                 </div>
-
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
@@ -162,7 +161,7 @@ if (!isset($_SESSION['id'])) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/helpdeskproject/admin/form_additem.php">
+                                        <a href="#">
                                             <i class="metismenu-icon"></i>
                                             เพิ่มสิ่งของ
                                         </a>
@@ -175,9 +174,9 @@ if (!isset($_SESSION['id'])) {
                                     สถานที่ปฏิบัติงาน
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul class="mm-show">
+                                <ul>
                                     <li>
-                                        <a href="#" class="mm-active">
+                                        <a href="/helpdeskproject/admin/allroom.php">
                                             <i class="metismenu-icon"></i>
                                             รายชื่อสถานที่ปฏิบัติงาน
                                         </a>
@@ -191,6 +190,27 @@ if (!isset($_SESSION['id'])) {
                                 </ul>
                             </li>
                             <li>
+                                <a href="#" >
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    สาขา
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul  class="mm-show">
+                                    <li>
+                                        <a href="/helpdeskproject/admin/alldepartment.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสาขา
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="mm-active">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสาขา
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
@@ -199,7 +219,6 @@ if (!isset($_SESSION['id'])) {
                         </ul>
                     </div>
                 </div>
-
             </div>
             <div class="app-main__outer">
                 <div class="app-main__inner">
@@ -207,16 +226,17 @@ if (!isset($_SESSION['id'])) {
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="pe-7s-note2 icon-gradient bg-mean-fruit">
+                                    <i class="pe-7s-plus icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>รายชื่อสถานที่ปฏิบัติงาน
-                                    <div class="page-title-subheading">หน้ารายชื่อสถานที่ปฏิบัติงานจะแสดงรายชื่อสถานที่ปฏิบัติงาน
+                                <div>เพิ่มสาขา
+                                    <div class="page-title-subheading">หน้าเพิ่มสาขา
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
                     แผนก: Admin
@@ -224,56 +244,20 @@ if (!isset($_SESSION['id'])) {
                     <br />
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h5 class="card-title">รายชื่อสถานที่ปฏิบัติงาน</h5>
-                            <?php
-                            $sql = "SELECT * FROM location";
-                            $result = $dbcon->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // head of table
-                                echo "<table class='mb-0 table table-hover'>";
-                                echo "<tr align='center'>";
-                                echo "<th>รหัสสถานที่ปฏิบัติงาน</th>";
-                                echo "<th>ชื่อสถาที่ปฏิบัติงาน</th>";
-                                echo "<th>จัดการ</th>";
-                                echo "</tr>";
-                                // output data of each row
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<tr align='center'>";
-                                    echo "<td>" . $row["room_id"] . " </td>";
-                                    echo "<td>" . $row["room_name"] . "</td>";
-                                    echo "<td><div class='dropdown d-inline-block'>
-                            <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
-                            <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
-
-                        <form action='deleteroom.php' method='post'>
-                            <input type='hidden' name='room_id' value='" . $row['room_id'] . "'>
-                            <button type='submit' tabindex='0' class='dropdown-item' style='color:red;'>ลบสถานที่ปฏิบัติงาน</button>
-                        </form>
-
-                            </div>
-                            </div>
-                            </td>";
-                                    echo "</tr>";
-                                }
-                                echo "</table>";
-                            } else {
-                                echo "ขณะนี้ไม่มีการแจ้งซ่อม<br />";
-                            }
-
-                            ?>
+                            <h5 class="card-title">เพิ่มสาขา</h5>
+                            <hr />
+                            <form name="register" id="register" action="adddep.php" method="POST">
+                                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">เพิ่มสาขา : </label>
+                                    <div class="col-sm-10"><input type="text" name="dep" required autofocus placeholder="เช่น การจัดการ, บัญชี" class="form-control"></div>
+                                </div>
+                                <div class="position-relative row form-group">
+                                    <div class="col-sm-10 offset-sm-2">
+                                        <button class="btn btn-primary">ตกลง</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-                    <!-- DROPDOWN EDIT REPAIRMAN -->
-                    <!-- <form action='form_edit.php' method='post'>
-                        <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
-                        <input type='hidden' name='name' value='" . $row['name'] . "'>
-                        <input type='hidden' name='lastname' value='" . $row['lastname'] . "'>
-                        <input type='hidden' name='dep' value='" . $row['dep'] . "'>
-                        <button type='submit' tabindex='0' class='dropdown-item'>แก้ไขรายละเอียด</button>
-                    </form> -->
-
                     <!-- MAIN LAYOUT STOP HERE -->
                 </div>
             </div>

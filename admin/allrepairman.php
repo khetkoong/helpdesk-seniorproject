@@ -219,7 +219,7 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    แผนก: แอดมิน
+                    แผนก: Admin
                     <hr />
                     <br />
                     <div class="main-card mb-3 card">

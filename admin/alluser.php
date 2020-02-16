@@ -219,7 +219,7 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    แผนก: แอดมิน
+                    แผนก: Admin
                     <hr />
                     <br />
                     <div class="main-card mb-3 card">
@@ -254,7 +254,7 @@ if (!isset($_SESSION['id'])) {
                             <button type='button' aria-haspopup='true' aria-expanded='false' data-toggle='dropdown' class='dropdown-toggle btn btn-primary'>จัดการ</button>
                             <div tabindex='-1' role='menu' aria-hidden='true' class='dropdown-menu'>
 
-                            <form action='detail.php' method='post'>
+                            <form action='detailuser.php' method='post'>
                             <input type='hidden' name='user_id' value='" . $row['user_id'] . "'>
                             <button type='submit' tabindex='0' class='dropdown-item'>ดูรายละเอียด</button>
                         </form>

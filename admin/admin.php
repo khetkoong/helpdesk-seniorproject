@@ -190,6 +190,27 @@ if (!isset($_SESSION['id'])) {
                                 </ul>
                             </li>
                             <li>
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    สาขา
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/alldepartment.php">
+                                            <i class="metismenu-icon"></i>
+                                            รายชื่อสาขา
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/helpdeskproject/admin/form_adddep.php">
+                                            <i class="metismenu-icon"></i>
+                                            เพิ่มสาขา
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="/helpdeskproject/logout.php">
                                     <i class="metismenu-icon pe-7s-power"></i>
                                     ออกจากระบบ
@@ -217,7 +238,7 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <!-- MAIN LAYOUT START HERE -->
                     <?php echo "<h1>ยินดีต้อนรับ : " . $_SESSION['name'] . "</h1>" ?>
-                    แผนก: แอดมิน
+                    แผนก: Admin
                     <hr />
                     <br />
                     <div class="row">
