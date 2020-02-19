@@ -12,7 +12,6 @@
     $item = $_POST['item'];
     $serial_num = $_POST['serial_num'];
     $detail = $_POST['detail'];
-    $date = date("Y-m-d H:i:s");
     $submitted_name = $_SESSION['name'];
     
     $query = "UPDATE ticket SET room = '$room', item = '$item', serial_num = '$serial_num', detail = '$detail', created_at = '$date' WHERE id = $id";
@@ -24,7 +23,8 @@
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
-	date_default_timezone_set("Asia/Bangkok");
+    date_default_timezone_set("Asia/Bangkok");
+    $date = date("Y-m-d H:i:s");
 
 	$sToken = "7NB4M8RAe0uguDxNvBEoFbECfyXXy5i7KbOvvOW5dnK";
     $sMessage = "Job Alert

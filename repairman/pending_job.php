@@ -180,9 +180,9 @@ if (!isset($_SESSION['id'])) {
                         <h5 class="card-title">การแจ้งซ่อมที่กำลังดำเนินการ</h5>
                             <?php
 
-                            $repairman_name = $_SESSION['name'];
+                            $repairman_id = $_SESSION['user_id'];
 
-                            $sql = "SELECT id, room, item, serial_num, detail, submitted_name, created_at, pending_at, job_status FROM ticket WHERE job_status = 'pending' AND repairman = '$repairman_name' ORDER BY pending_at ASC";
+                            $sql = "SELECT * FROM ticket WHERE job_status = 'pending' AND repairman_id = $repairman_id ORDER BY pending_at ASC";
                             $result = $dbcon->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -235,7 +235,7 @@ if (!isset($_SESSION['id'])) {
                                 }
                                 echo "</table>";
                             } else {
-                                echo "Have no job now <br />";
+                                echo "ไม่มีการแจ้งซ่อมที่สถานะ กำลังดำเนินการ ตอนนี้<br />";
                             }
 
                             ?>

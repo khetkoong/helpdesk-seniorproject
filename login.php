@@ -43,7 +43,7 @@
     } else {
         echo ("<script LANGUAGE='JavaScript'>
         window.alert('ชื่อผู้ใช้ หรือ รหัสผ่าน ผิด');
-        window.location.href='form_login.php';
+        window.location.href='/helpdeskproject/form_login.php';
         </script>");
     }
     mysqli_close($dbcon);

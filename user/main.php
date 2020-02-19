@@ -23,7 +23,6 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-
     <link href="../main.css" rel="stylesheet">
 </head>
 
@@ -255,7 +254,7 @@ if (!isset($_SESSION['id'])) {
                     $id = $_SESSION['id'];
                     $name = $_SESSION['name'];
 
-                    $sql = "SELECT id, room, item, serial_num, detail, job_status FROM ticket WHERE user_id= '$id' AND job_status= 'waiting' ORDER BY created_at DESC";
+                    $sql = "SELECT * FROM ticket WHERE user_id= '$id' AND job_status= 'waiting' ORDER BY created_at DESC";
                     $result = $dbcon->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -275,7 +274,7 @@ if (!isset($_SESSION['id'])) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr align='center'>";
-                            echo "<td>" . $row["id"] . "</td>";
+                            echo "<td>" . $row["id"] . "</td>"; 
                             echo "<td>" . $row["room"] . "</td>";
                             echo "<td>" . $row["item"] . "</td>";
                             echo "<td>" . $row["serial_num"] . "</td>";

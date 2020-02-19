@@ -376,6 +376,13 @@ if (!isset($_SESSION['id'])) {
     $job_waiting = $row[0];
     ?>
     <?php
+    $sql = "SELECT COUNT(*) FROM ticket WHERE job_status = 'pending'";
+    $result = $dbcon->query($sql);
+    $row = $result->fetch_row();
+    echo $row[0];
+    $job_pending = $row[0];
+    ?>
+    <?php
     $sql = "SELECT COUNT(*) FROM ticket WHERE job_status = 'success'";
     $result = $dbcon->query($sql);
     $row = $result->fetch_row();
@@ -386,6 +393,7 @@ if (!isset($_SESSION['id'])) {
     <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js"></script>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
+    
         const btnDownload = document.querySelector('#btnDownload');
         const myCanvas = document.querySelector('#job_status');
 
@@ -427,10 +435,10 @@ if (!isset($_SESSION['id'])) {
         var job_status2 = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['การแจ้งซ่อมสถานะรอ [<?php echo "$job_total" ?>]', 'การแจ้งซ่อมสถานะกำลังดำเนินการ [<?php echo "$job_waiting" ?>]', 'การแจ้งซ่อมสถานะเสร็จแล้ว [<?php echo "$job_success" ?>]'],
+                labels: ['การแจ้งซ่อมสถานะรอ [<?php echo "$job_waiting" ?>]', 'การแจ้งซ่อมสถานะกำลังดำเนินการ [<?php echo "$job_pending" ?>]', 'การแจ้งซ่อมสถานะเสร็จแล้ว [<?php echo "$job_success" ?>]'],
                 datasets: [{
                     label: '# of Jobs',
-                    data: [<?php echo "$job_total" ?>, <?php echo "$job_waiting" ?>, <?php echo "$job_success" ?>],
+                    data: [<?php echo "$job_waiting" ?>, <?php echo "$job_pending" ?>, <?php echo "$job_success" ?>],
                     backgroundColor: [
                         'rgba(60, 51, 255, 1)',
                         'rgba(255, 227, 51, 1)',
@@ -448,7 +456,7 @@ if (!isset($_SESSION['id'])) {
             options: {
                 title: {
                     display: true,
-                    text: 'การแจ้งซ่อมทั้งหมด'
+                    text: 'การแจ้งซ่อมทั้งหมด [<?php echo $job_total ?>]'
                 }
             }
         });

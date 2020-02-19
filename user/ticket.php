@@ -13,7 +13,6 @@
     $detail = $_POST['detail'];
     $submitted_name = $_SESSION['name'];
     $user_id = $_SESSION['id'];
-    $date = date("Y-m-d H:i:s");
 
     $query = "INSERT INTO ticket (item, room, serial_num, detail, submitted_name, user_id) VALUES ('$item', '$room', '$serial_num', '$detail', '$submitted_name', '$user_id')";
     $result = mysqli_query($dbcon, $query);
@@ -24,10 +23,11 @@
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
-	date_default_timezone_set("Asia/Bangkok");
+    date_default_timezone_set("Asia/Bangkok");
+    $date = date("Y-m-d H:i:s");
 
 	$sToken = "JczwUZmHhG9mAs2M6BE4Q8TkJAIriLRYR22WSTOU3rE";
-    $sMessage = "Job Alert
+    $sMessage = "แจ้งเตือนการแจ้งซ่อม
 ห้อง: $room
 สิ่งของ: $item
 รายละเอียด: $detail

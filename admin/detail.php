@@ -382,6 +382,74 @@ if (!isset($_SESSION['id'])) {
         <script type="text/javascript" src="../assets/scripts/main.js"></script>
         <script>
 
+            const btnDownload = document.querySelector('#btnDownload');
+            const myCanvas = document.querySelector('#speed');
+
+            const btnDownload2 = document.querySelector('#btnDownload2');
+            const myCanvas2 = document.querySelector('#perfect');
+
+            const btnDownload3 = document.querySelector('#btnDownload3');
+            const myCanvas3 = document.querySelector('#talk');
+
+            const btnDownload4 = document.querySelector('#btnDownload4');
+            const myCanvas4 = document.querySelector('#guide');
+
+            btnDownload.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas.msSaveBlob(), "ความเร็วในการทำงาน_<?php echo $name; echo "_" . date('Y-m-d') ?>.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas.toDataURL();
+                a.download = "ความเร็วในการทำงาน_<?php echo $name; echo "_" . date('Y-m-d') ?>.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+
+        btnDownload2.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas2.msSaveBlob(), "ความเรียบร้อยในการทำงาน_<?php echo $name; echo "_" . date('Y-m-d') ?>.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas2.toDataURL();
+                a.download = "ความเรียบร้อยในการทำงาน_<?php echo $name; echo "_" . date('Y-m-d') ?>.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+
+        btnDownload3.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas3.msSaveBlob(), "การปฏิสัมพันธ์กับผู้ใช้_<?php echo $name; echo "_" . date('Y-m-d') ?>.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas3.toDataURL();
+                a.download = "การปฏิสัมพันธ์กับผู้ใช้_<?php echo $name; echo "_" . date('Y-m-d') ?>.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+
+        btnDownload4.addEventListener("click", function() {
+            console.log('click')
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(myCanvas4.msSaveBlob(), "การให้คำแนะนำ, แจ้งอาการของเครื่อง และอธิบายถึงการแก้ปัญหา_<?php echo $name; echo "_" . date('Y-m-d') ?>.png");
+            } else {
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                a.href = myCanvas4.toDataURL();
+                a.download = "การให้คำแนะนำ, แจ้งอาการของเครื่อง และอธิบายถึงการแก้ปัญหา_<?php echo $name; echo "_" . date('Y-m-d') ?>.png";
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+
             var ctx = document.getElementById('speed').getContext('2d');
             var job_status2 = new Chart(ctx, {
                 type: 'pie',

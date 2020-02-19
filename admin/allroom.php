@@ -246,6 +246,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <h5 class="card-title">รายชื่อสถานที่ปฏิบัติงาน</h5>
+                            <a href="exportRoom.php" class="btn btn-success pull-right">บันทึกรายงาน</a>
                             <?php
                             $sql = "SELECT * FROM location";
                             $result = $dbcon->query($sql);

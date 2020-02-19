@@ -229,8 +229,8 @@ if ($_SESSION['role'] != 'member') {
 
                                 
                                 <div class="position-relative row form-check">
-                                    <div class="col-sm-10 offset-sm-2">
-                                        <button class="btn btn-primary">Submit</button>
+                                    <div class="offset-sm-2">
+                                        <button class="btn btn-primary">ยืนยัน</button>
                                     </div>
                                 </div>
                             </form>

@@ -20,14 +20,14 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     date_default_timezone_set("Asia/Bangkok");
-
-    $sToken = "7NB4M8RAe0uguDxNvBEoFbECfyXXy5i7KbOvvOW5dnK";
-    $sMessage = "Job Alert
---------------------------------------------------
-$repairman has Success the Job
-Job ID: $id
-Job Status: Success
---------------------------------------------------";
+    $date = date("Y-m-d H:i:s");
+    
+    $sToken = "JczwUZmHhG9mAs2M6BE4Q8TkJAIriLRYR22WSTOU3rE";
+    $sMessage = "แจ้งเตือนการแจ้งซ่อม
+$repairman ได้ส่งงานการแจ้งซ่อม
+รหัสการแจ้งซ่อม: $id
+สถานะของการแจ้งซ่อม: เสร็จสิ้น
+เวลา: $date"; 
 
     $chOne = curl_init();
     curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
@@ -46,13 +46,12 @@ Job Status: Success
     }
     curl_close($chOne);
     // LINE NOTIFICATION STOP
-
         echo "<script>
                 alert('ส่งงานสำเร็จ');
                 window.location.href='pending_job.php';
             </script>";
     } else {
-        echo "เกิดข้อผิดพลาด ". mysqli_error($dbcon). "this num is: ".$id;
+        echo "เกิดข้อผิดพลาด ". mysqli_error($dbcon);
     }
 
     mysqli_close($dbcon);

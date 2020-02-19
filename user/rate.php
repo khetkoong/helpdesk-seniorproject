@@ -75,19 +75,19 @@ $sql = "UPDATE users
 SET speed_3 = speed_3 + $speed_point_3,
  speed_2 = speed_2 + $speed_point_2,
  speed_1 = speed_1 + $speed_point_1,
--- speed end
+
  perfect_3 = perfect_3 + $perfect_point_3,
  perfect_2 = perfect_2 + $perfect_point_2,
  perfect_1 = perfect_1 + $perfect_point_1,
--- perfect end 
+
  talk_3 = talk_3 + $talk_point_3,
  talk_2 = talk_2 + $talk_point_2,
  talk_1 = talk_1 + $talk_point_1,
--- talk end
+
  guide_3 = guide_3 + $guide_point_3,
  guide_2 = guide_2 +  $guide_point_2,
  guide_1 = guide_1 +  $guide_point_1
--- guide end
+
 WHERE user_id = '$repairman_id'";
 
 $result = mysqli_query($dbcon, $sql);

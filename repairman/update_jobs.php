@@ -22,12 +22,15 @@ if ($result) {
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     date_default_timezone_set("Asia/Bangkok");
-
-    $sToken = "7NB4M8RAe0uguDxNvBEoFbECfyXXy5i7KbOvvOW5dnK";
-    $sMessage = "Job Alert
-$repairman has take the Job
-Job ID: $jobid
-Job Status: Pending";
+    $date = date("Y-m-d H:i:s");
+    
+    $sToken = "JczwUZmHhG9mAs2M6BE4Q8TkJAIriLRYR22WSTOU3rE";
+    
+    $sMessage = "แจ้งเตือนการแจ้งซ่อม
+$repairman ได้รับงานการแจ้งซ่อม
+รหัสการแจ้งซ่อม: $jobid
+สถานะของการแจ้งซ่อม: กำลังดำเนินการ
+เวลา: $date"; 
 
     $chOne = curl_init();
     curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");

@@ -188,7 +188,6 @@ if (!isset($_SESSION['id'])) {
                                     <div class="widget-content-right">
                                         <div class="widget-numbers text-white"><span>
                                                 <?php
-                                                $name = $_SESSION['name'];
                                                 $sql = "SELECT COUNT(*) FROM ticket";
                                                 $result = $dbcon->query($sql);
                                                 $row = $result->fetch_row();
